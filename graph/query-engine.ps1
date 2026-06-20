@@ -1,81 +1,48 @@
-# EKOS Sprint 1 - Query Engine
-# Provides exact ID matching, neighbor lookup, and text search.
+<#
+FILE: C:\repos\ekos\graph\query-engine.ps1
 
-$script:EKOSGraphRoot = $PSScriptRoot
-$script:EKOSNodesPath = Join-Path $script:EKOSGraphRoot "nodes.json"
-$script:EKOSEdgesPath = Join-Path $script:EKOSGraphRoot "edges.json"
+EKOS Sprint 1 - Query Engine (READ ONLY)
 
-function Get-EKOSNodes {
-    if (-not (Test-Path $script:EKOSNodesPath)) {
-        return @()
-    }
+PURPOSE:
+Performs deterministic 1-hop traversal of the graph.
 
-    $content = Get-Content -Path $script:EKOSNodesPath -Raw
-
-    if ([string]::IsNullOrWhiteSpace($content)) {
-        return @()
-    }
-
-    return @(ConvertFrom-Json -InputObject $content)
-}
-
-function Get-EKOSEdges {
-    if (-not (Test-Path $script:EKOSEdgesPath)) {
-        return @()
-    }
-
-    $content = Get-Content -Path $script:EKOSEdgesPath -Raw
-
-    if ([string]::IsNullOrWhiteSpace($content)) {
-        return @()
-    }
-
-    return @(ConvertFrom-Json -InputObject $content)
-}
+RULES:
+- Read-only access
+- Exact match only
+- No semantic search
+- No inference
+- No multi-hop traversal
+#>
 
 function Query-EKOS {
     param(
-        [Parameter(Mandatory = $true, Position = 0)]
-        [ValidateSet("match", "neighbors", "search")]
-        [string]$Mode,
-
-        [Parameter(Mandatory = $true, Position = 1)]
-        [string]$Value
+        [string]$nodeId
     )
 
-    $nodes = Get-EKOSNodes
-    $edges = Get-EKOSEdges
+    # Load graph using absolute script path
+    $nodes = (Get-Content "$PSScriptRoot\nodes.json" | ConvertFrom-Json).nodes
+    $edges = (Get-Content "$PSScriptRoot\edges.json" | ConvertFrom-Json).edges
 
-    switch ($Mode.ToLowerInvariant()) {
-        "match" {
-            return $nodes | Where-Object {
-                $_.id -ieq $Value
-            }
-        }
-
-        "neighbors" {
-            return $edges | Where-Object {
-                $_.from -ieq $Value -or $_.to -ieq $Value
-            }
-        }
-
-        "search" {
-            $nodeResults = $nodes | Where-Object {
-                $_.id -like "*$Value*" -or
-                $_.title -like "*$Value*" -or
-                $_.type -like "*$Value*"
-            }
-
-            $edgeResults = $edges | Where-Object {
-                $_.from -like "*$Value*" -or
-                $_.to -like "*$Value*" -or
-                $_.type -like "*$Value*"
-            }
-
-            return [PSCustomObject]@{
-                nodes = @($nodeResults)
-                edges = @($edgeResults)
-            }
-        }
+    # Validate node exists
+    if ($nodes.id -notcontains $nodeId) {
+        return @{
+            nodes = @()
+            edges = @()
+        } | ConvertTo-Json -Depth 10
     }
+
+    # 1-hop traversal only (outgoing edges)
+    $relatedEdges = $edges | Where-Object { $_.from -eq $nodeId }
+
+    $relatedNodes = @()
+
+    foreach ($edge in $relatedEdges) {
+        $relatedNodes += $edge.to
+    }
+
+    # Deterministic output
+    return @{
+        nodes = $relatedNodes
+        edges = $relatedEdges
+    } | ConvertTo-Json -Depth 10
 }

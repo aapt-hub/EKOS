@@ -1,27 +1,27 @@
 [
-  {
-    "id": "PAT-001",
-    "title": "Example Pattern",
-    "type": "pattern"
-  },
-  {
-    "id": "ADR-005",
-    "title": "Example Decision",
-    "type": "adr"
-  },
-  {
-    "id": "RUN-001",
-    "title": "Example Runbook",
-    "type": "runbook"
-  },
-  {
-    "id": "ARC-001",
-    "title": "Example Architecture",
-    "type": "architecture"
-  },
-  {
-    "id": "LESSON-001",
-    "title": "Example Lesson",
-    "type": "lesson"
-  }
+    {
+        "id":  "PAT-001",
+        "title":  "Example Pattern",
+        "type":  "pattern"
+    },
+    {
+        "id":  "ADR-005",
+        "title":  "Example Decision",
+        "type":  "adr"
+    },
+    {
+        "id":  "RUN-001",
+        "title":  "Example Runbook",
+        "type":  "runbook"
+    },
+    {
+        "id":  "ARC-001",
+        "title":  "Example Architecture",
+        "type":  "architecture"
+    },
+    {
+        "id":  "LESSON-001",
+        "title":  "Example Lesson",
+        "type":  "lesson"
+    }
 ]
