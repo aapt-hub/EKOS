@@ -1,0 +1,22 @@
+{
+  "patterns": [
+    {
+      "id": "PAT-0001",
+      "name": "Blue-Green-Deployment",
+      "file": "patterns/PAT-0001-Blue-Green-Deployment.md",
+      "tags": ["deployment", "release"]
+    },
+    {
+      "id": "PAT-0018",
+      "name": "GitOps",
+      "file": "patterns/PAT-0018-GitOps.md",
+      "tags": ["git", "deployment", "devops"]
+    },
+    {
+      "id": "PAT-0014",
+      "name": "RAG-Architecture",
+      "file": "patterns/PAT-0014-RAG-Architecture.md",
+      "tags": ["ai", "retrieval", "llm"]
+    }
+  ]
+}

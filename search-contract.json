@@ -1,0 +1,11 @@
+{
+  "id": "string",
+  "type": "pattern|adr|runbook|architecture|stack|lesson|file",
+  "title": "string",
+  "summary": "string",
+  "tags": ["string"],
+  "source_path": "string",
+  "score": 0.0,
+  "last_modified": "date",
+  "content_preview": "string"
+}

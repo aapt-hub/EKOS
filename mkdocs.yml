@@ -1,0 +1,9 @@
+﻿site_name: EKOS / PETOS
+site_description: Enterprise Engineering Knowledge Operating System
+
+theme:
+  name: material
+
+nav:
+  - Home: README.md
+  - Architecture: architecture.md
