@@ -1,4 +1,4 @@
-﻿# EKOS / PETOS .gitignore
+# EKOS / PETOS .gitignore
 
 # OS files
 .DS_Store
@@ -8,7 +8,7 @@ Thumbs.db
 *.log
 logs/
 
-# Cache
+# Cache / Temp
 .cache/
 tmp/
 temp/
@@ -19,12 +19,12 @@ __pycache__/
 .venv/
 venv/
 
-# Node
+# Node / JS
 node_modules/
 dist/
 build/
 
-# AI / MCP noise
+# AI / Graph / Runtime artifacts
 .mcp/
 agents/
 ai-cache/
@@ -32,18 +32,5 @@ rag-cache/
 vector-db/
 embeddings/
 
-# Drafts
-drafts/
-sandbox/
-wip/
-*_draft.md
-
-# Secrets
-.env
-*.key
-*.pem
-
-# Generated
-generated/
-llm-output/
-site/
+# Sprint isolation
+ekos-sprint2-test/

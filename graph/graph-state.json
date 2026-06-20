@@ -1,0 +1,46 @@
+{
+    "edges":  [
+                  {
+                      "from":  "PAT-001",
+                      "to":  "ADR-005",
+                      "type":  "depends on"
+                  },
+                  {
+                      "from":  "ARC-001",
+                      "to":  "PAT-001",
+                      "type":  "implements"
+                  },
+                  {
+                      "from":  "LESSON-001",
+                      "to":  "RUN-001",
+                      "type":  "see also"
+                  }
+              ],
+    "nodes":  [
+                  {
+                      "id":  "PAT-001",
+                      "title":  "Example Pattern",
+                      "type":  "pattern"
+                  },
+                  {
+                      "id":  "ADR-005",
+                      "title":  "Example Decision",
+                      "type":  "adr"
+                  },
+                  {
+                      "id":  "RUN-001",
+                      "title":  "Example Runbook",
+                      "type":  "runbook"
+                  },
+                  {
+                      "id":  "ARC-001",
+                      "title":  "Example Architecture",
+                      "type":  "architecture"
+                  },
+                  {
+                      "id":  "LESSON-001",
+                      "title":  "Example Lesson",
+                      "type":  "lesson"
+                  }
+              ]
+}
