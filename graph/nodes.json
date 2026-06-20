@@ -1,112 +1,27 @@
 [
   {
-    "type": "pattern",
     "id": "PAT-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:22:01.7468216-04:00",
-    "label": "GitOps deployment pattern"
+    "title": "Example Pattern",
+    "type": "pattern"
   },
   {
-    "type": "pattern",
-    "id": "PAT-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:23:34.4081039-04:00",
-    "label": "GitOps deployment pattern"
+    "id": "ADR-005",
+    "title": "Example Decision",
+    "type": "adr"
   },
   {
-    "type": "architecture",
-    "id": "ADR-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:23:34.4142757-04:00",
-    "label": "Microservices decision record"
-  },
-  {
-    "type": "runbook",
     "id": "RUN-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:23:34.4193751-04:00",
-    "label": "Kubernetes rollback procedure"
+    "title": "Example Runbook",
+    "type": "runbook"
   },
   {
-    "type": "pattern",
-    "id": "PAT-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:31:53.3546755-04:00",
-    "label": "GitOps deployment pattern"
+    "id": "ARC-001",
+    "title": "Example Architecture",
+    "type": "architecture"
   },
   {
-    "type": "architecture",
-    "id": "ADR-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:31:54.2341509-04:00",
-    "label": "Microservices decision record"
-  },
-  {
-    "type": "runbook",
-    "id": "RUN-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:31:54.3921472-04:00",
-    "label": "Kubernetes rollback procedure"
-  },
-  {
-    "type": "pattern",
-    "id": "PAT-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:37:06.3358656-04:00",
-    "label": "GitOps deployment pattern"
-  },
-  {
-    "type": "architecture",
-    "id": "ADR-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:37:07.4137285-04:00",
-    "label": "Microservices decision record"
-  },
-  {
-    "type": "runbook",
-    "id": "RUN-001",
-    "embedding": null,
-    "metadata": {
-      "frequency": 1,
-      "confidence": 0.5
-    },
-    "createdAt": "2026-06-20T00:37:07.7098459-04:00",
-    "label": "Kubernetes rollback procedure"
+    "id": "LESSON-001",
+    "title": "Example Lesson",
+    "type": "lesson"
   }
 ]

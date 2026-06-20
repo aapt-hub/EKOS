@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "from": "PAT-001",
+    "to": "aws",
+    "type": "mentions"
+  },
+  {
+    "from": "PAT-001",
+    "to": "ADR-005",
+    "type": "depends on"
+  },
+  {
+    "from": "ADR-005",
+    "to": "terraform",
+    "type": "uses"
+  },
+  {
+    "from": "RUN-001",
+    "to": "powershell",
+    "type": "mentions"
+  },
+  {
+    "from": "ARC-001",
+    "to": "PAT-001",
+    "type": "implements"
+  },
+  {
+    "from": "LESSON-001",
+    "to": "RUN-001",
+    "type": "see also"
+  }
+]
