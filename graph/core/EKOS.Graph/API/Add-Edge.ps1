@@ -2,16 +2,27 @@ function Add-Edge {
     param(
         [string]$From,
         [string]$To,
-        [string]$Relation
+        [string]$Relation,
+        [switch]$Replay
     )
 
-    Assert-EdgeIntegrity $From $To
+    $state = Get-GraphState
 
-    $result = Add-EdgeCore $From $To $Relation
-
-    if ($result.success) {
-        Save-Graph
+    if (-not $state.nodes.ContainsKey($From) -or -not $state.nodes.ContainsKey($To)) {
+        throw "[EKOS.Graph] INVALID EDGE: missing node"
     }
 
-    return $result
+    $edge = @{
+        from     = $From
+        to       = $To
+        relation = $Relation
+    }
+
+    $state.edges += $edge
+
+    if (-not $Replay) {
+        Write-WAL "AddEdge" $edge
+    }
+
+    Write-Host "[EKOS.Graph] EDGE: $From -> $To ($Relation)"
 }
