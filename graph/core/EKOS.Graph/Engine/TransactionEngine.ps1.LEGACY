@@ -1,0 +1,48 @@
+# EKOS Transaction Engine v3.1
+
+$Global:EKOS_Context = @{
+    CurrentTransaction = $null
+}
+
+function Begin-EKOSTransaction {
+
+    $txId = [guid]::NewGuid().ToString()
+
+    $Global:EKOS_Context.CurrentTransaction = @{
+        Id = $txId
+        Locks = @()
+        State = "ACTIVE"
+    }
+
+    Write-Host "[EKOS.Graph] TX START $txId"
+}
+
+function Commit-EKOSTransaction {
+
+    $tx = $Global:EKOS_Context.CurrentTransaction
+    if (-not $tx) { throw "No TX" }
+
+    foreach ($l in $tx.Locks) {
+        Release-EKOSLock -Id $l -TxId $tx.Id
+    }
+
+    Write-WAL $tx
+
+    $Global:EKOS_Context.CurrentTransaction = $null
+
+    Write-Host "[EKOS.Graph] TX COMMIT $($tx.Id)"
+}
+
+function Rollback-EKOSTransaction {
+
+    $tx = $Global:EKOS_Context.CurrentTransaction
+    if (-not $tx) { return }
+
+    foreach ($l in $tx.Locks) {
+        Release-EKOSLock -Id $l -TxId $tx.Id
+    }
+
+    $Global:EKOS_Context.CurrentTransaction = $null
+
+    Write-Host "[EKOS.Graph] TX ROLLBACK"
+}

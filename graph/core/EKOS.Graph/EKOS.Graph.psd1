@@ -1,9 +1,18 @@
 @{
     RootModule        = 'EKOS.Graph.psm1'
-    ModuleVersion     = '3.0.0'
-    GUID              = 'c8a7f2d2-6c9a-4c4b-9f2e-ec2d7a11e111'
+    ModuleVersion     = '3.5.0'
+	GUID              = 'ff920e05-6485-491b-b4eb-665374a68474'
     Author            = 'EKOS'
     CompanyName       = 'EKOS'
+    Description       = 'EKOS Graph Engine v3'
+
     PowerShellVersion = '5.1'
-    FunctionsToExport = '*'
+
+    FunctionsToExport = @(
+        'Invoke-EKOSQuery'
+    )
+
+    CmdletsToExport   = @()
+    VariablesToExport  = @()
+    AliasesToExport    = @()
 }

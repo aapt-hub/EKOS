@@ -1,22 +1,55 @@
+# =====================================================
+# EKOS.Graph v3.1 - STABLE MODULE CORE
+# Unified Execution + Transaction Safe Loader
+# =====================================================
+
 $ErrorActionPreference = "Stop"
 
-# ENGINE
-. "$PSScriptRoot\Engine\GraphState.ps1"
-. "$PSScriptRoot\Engine\TransactionEngine.ps1"
-. "$PSScriptRoot\Engine\WAL.ps1"
+# -----------------------------
+# CORE ENGINE
+# -----------------------------
+. "$PSScriptRoot\Engine\GraphCore.ps1"
 
-# API
-. "$PSScriptRoot\API\Add-Node.ps1"
-. "$PSScriptRoot\API\Add-Edge.ps1"
-. "$PSScriptRoot\API\Get-Graph.ps1"
-. "$PSScriptRoot\API\Traverse-Graph.ps1"
+# -----------------------------
+# BRIDGE LAYER
+# -----------------------------
+. "$PSScriptRoot\Engine\GraphCore.Bridge.ps1"
 
-function Initialize-EKOSGraph {
-    Initialize-GraphState
-    Initialize-WAL
-    Write-Host "[EKOS.Graph] INITIALIZED"
-}
+# -----------------------------
+# TRANSACTION ENGINE (SINGLE SOURCE OF TRUTH)
+# -----------------------------
+# "$PSScriptRoot\Engine\TransactionEngine.ps1"
 
-Export-ModuleMember -Function *
+# -----------------------------
+# STORAGE / WAL
+# -----------------------------
+. "$PSScriptRoot\Storage\WAL.ps1"
 
-. "$PSScriptRoot\Engine\WAL.ps1"
+# -----------------------------
+# INDEX ENGINE
+# -----------------------------
+. "$PSScriptRoot\Index\Initialize-EKOSIndex.ps1"
+. "$PSScriptRoot\Index\Update-EKOSIndex.ps1"
+
+# =====================================================
+# MODULE INITIALIZATION
+# =====================================================
+
+Initialize-EKOSGraph
+
+Write-Host "[EKOS.Graph] MODULE LOADED (STABLE v3 CORE)" -ForegroundColor Green
+
+# =====================================================
+# EXPORTS (CRITICAL)
+# =====================================================
+
+Export-ModuleMember -Function `
+    Add-Node, `
+    Add-Edge, `
+    Begin-EKOSTransaction, `
+    Commit-EKOSTransaction, `
+    Invoke-EKOSCommand, `
+    Invoke-EKOSGraphCommand, `
+    Invoke-EKOSQuery, `
+    Invoke-EKOSQueryOptimizer, `
+    Initialize-EKOSGraph
