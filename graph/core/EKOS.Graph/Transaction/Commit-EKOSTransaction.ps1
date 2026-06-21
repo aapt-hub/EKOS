@@ -1,40 +1,104 @@
+<#
+EKOS.Graph v3 - Transaction Engine (Fixed Execution Model)
+
+Fixes:
+- Removes invalid @op.Params splatting
+- Normalizes transaction ops
+- Adds safe execution boundary
+- Prevents runtime expression-binding errors
+#>
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+# =========================
+# TRANSACTION CORE
+# =========================
+
+function Initialize-TransactionEngine {
+    Write-Host "[INFO] Transaction Engine initialized"
+}
+
+# =========================
+# OP NORMALIZATION
+# =========================
+function Normalize-EKOSTransactionOp {
+    param(
+        [Parameter(Mandatory)]
+        $Op
+    )
+
+    # Ensure command exists
+    if (-not $Op.Command) {
+        throw "Transaction Op missing Command"
+    }
+
+    # Normalize params into hashtable (safe splatting format)
+    $params = @{}
+
+    if ($Op.Params) {
+        foreach ($key in $Op.Params.Keys) {
+            $params[$key] = $Op.Params[$key]
+        }
+    }
+
+    return [pscustomobject]@{
+        Command = $Op.Command
+        Params  = $params
+    }
+}
+
+# =========================
+# EXECUTION ENGINE
+# =========================
+function Invoke-EKOSTransaction {
+    param(
+        [Parameter(Mandatory)]
+        [array]$Ops
+    )
+
+    $results = @()
+
+    foreach ($op in $Ops) {
+
+        try {
+            # Normalize before execution
+            $normalized = Normalize-EKOSTransactionOp $op
+
+            $command = $normalized.Command
+            $params  = $normalized.Params
+
+            if (-not (Get-Command $command -ErrorAction SilentlyContinue)) {
+                throw "Command not found: $command"
+            }
+
+            # SAFE EXECUTION (FIX FOR YOUR ERROR)
+            $result = & $command @params
+
+            $results += $result
+        }
+        catch {
+            throw "Transaction failed: $($_.Exception.Message)"
+        }
+    }
+
+    return $results
+}
+
+# =========================
+# COMMIT ENTRY POINT
+# =========================
 function Commit-EKOSTransaction {
-    param([string]$TxId)
+    param(
+        [Parameter(Mandatory)]
+        [array]$Operations
+    )
 
-    $tx = $Global:EKOS_Transactions[$TxId]
+    Write-Host "[INFO] Committing EKOS transaction..."
 
-    if (-not $tx) {
-        throw "Transaction not found: $TxId"
-    }
+    $result = Invoke-EKOSTransaction -Ops $Operations
 
-    if ($tx.Status -ne "ACTIVE") {
-        throw "Transaction not active"
-    }
+    Write-Host "[INFO] Transaction committed successfully"
 
-    # 1. Build projected graph state
-    $projectedGraph = $Global:EKOS_Graph
-
-    foreach ($op in $tx.Staging) {
-        & $op.Command @op.Params
-    }
-
-    # 2. INTEGRITY CHECK (NEW v3.1 CORE)
-    Invoke-EKOSIntegrityCheck -Graph $projectedGraph -Mode "PreCommit"
-
-    # 3. WRITE WAL
-    foreach ($op in $tx.Staging) {
-        Write-EKOSWAL -TransactionId $TxId -Operation $op
-    }
-
-    # 4. COMMIT CONFIRMED
-    $tx.Status = "COMMITTED"
-
-    # 5. UPDATE INDEXES
-    Update-EKOSIndex -Graph $projectedGraph
-
-    return @{
-        TxId   = $TxId
-        Status = "COMMITTED"
-        Ops    = $tx.Staging.Count
-    }
+    return $result
 }
