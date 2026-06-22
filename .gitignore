@@ -1,36 +1,71 @@
-# EKOS / PETOS .gitignore
+# =========================================================
+# EKOS CORE: BUILD ARTIFACTS (CRITICAL - DO NOT TRACK)
+# =========================================================
 
-# OS files
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.log
+*.user
+*.suo
+
+# .NET build folders
+*.Builds/
+*.TestResults/
+
+# =========================================================
+# EKOS GRAPH ARTIFACT SAFETY RULES
+# (these are generated system outputs, not source)
+# =========================================================
+
+ekos.graph.snapshot.json
+ekos.identity.graph.json
+ekos.system.graph.json
+ekos.transaction.plan.json
+ekos.transaction.validation.json
+
+# If you want strict versioning later, we can move these to /graph/artifacts/
+
+# =========================================================
+# TEMP / TOOLING OUTPUT
+# =========================================================
+
+*.tmp
+*.temp
+*.bak
+
+# PowerShell artifacts
+*.ps1.xml
+*.ps1.lnk
+
+# =========================================================
+# IDE / ENVIRONMENT
+# =========================================================
+
+.vs/
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================================================
+# OPTIONAL LOCAL DEV OVERRIDES
+# =========================================================
+
+appsettings.Development.json
+local.settings.json
+
+# =========================================================
+# OS FILES
+# =========================================================
+
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-logs/
-
-# Cache / Temp
-.cache/
-tmp/
-temp/
-
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
-
-# Node / JS
-node_modules/
-dist/
-build/
-
-# AI / Graph / Runtime artifacts
-.mcp/
-agents/
-ai-cache/
-rag-cache/
-vector-db/
-embeddings/
-
-# Sprint isolation
-ekos-sprint2-test/
+# =========================================================
+# EKOS SAFETY NOTE
+# =========================================================
+# Keep graph definitions (*.ps1, *.cs, *.md, *.json schema files)
+# DO NOT ignore source-level EKOS architecture definitions.
