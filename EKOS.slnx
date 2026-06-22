@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="EKOS.Graph.Core/EKOS.Graph.Core.csproj" />
+  <Project Path="EKOS.Graph.Tests/EKOS.Graph.Tests.csproj" />
   <Project Path="EKOS.GraphCompiler/EKOS.GraphCompiler.csproj" />
 </Solution>
