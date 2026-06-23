@@ -2,6 +2,13 @@
 
 Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
 
+## Current Status
+
+- Phase 2.5 Governance Foundation: COMPLETE
+- Documentation Refresh: IN PROGRESS
+- Phase 2.6 Governance Enforcement: NOT STARTED
+- Phase 3 Runtime Certification: BLOCKED
+
 ## Phase 2.5 Governance Foundation (COMPLETE)
 
 - Evidence in the repository:

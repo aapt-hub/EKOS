@@ -279,9 +279,10 @@ Invoke-EKOSQuery @{
 
 Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
 
-- Phase 2.5 — **LOS Governance Foundation: COMPLETE**
-- Phase 2.6 — Governance Enforcement: NOT STARTED
-- Phase 3 — Runtime Certification: BLOCKED until Phase 2.6 is complete
+- Phase 2.5 Governance Foundation: COMPLETE
+- Documentation Refresh: IN PROGRESS
+- Phase 2.6 Governance Enforcement: NOT STARTED
+- Phase 3 Runtime Certification: BLOCKED
 
 ---
 
