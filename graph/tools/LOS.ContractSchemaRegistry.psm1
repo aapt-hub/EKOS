@@ -103,6 +103,28 @@ $script:LosContractRegistry = [ordered]@{
     }
 }
 
+function Test-LosDictionaryKey {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [System.Collections.IDictionary]$Dictionary,
+
+        [Parameter(Mandatory)]
+        [string]$Name
+    )
+
+    foreach ($key in $Dictionary.Keys) {
+        if ([System.StringComparer]::Ordinal.Equals(
+            [string]$key,
+            $Name
+        )) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
 function Copy-LosSchemaValue {
     [CmdletBinding()]
     param(
@@ -150,7 +172,7 @@ function Copy-LosSchemaValue {
 
         $copy = [ordered]@{}
         foreach ($key in $keys) {
-            if ($copy.Contains($key)) {
+            if (Test-LosDictionaryKey -Dictionary $copy -Name $key) {
                 throw "Corrupt LOS registry: duplicate key '$key'."
             }
 
@@ -187,7 +209,9 @@ function Copy-LosSchemaValue {
 
     $objectCopy = [ordered]@{}
     foreach ($propertyName in $properties) {
-        if ($objectCopy.Contains($propertyName)) {
+        if (Test-LosDictionaryKey `
+            -Dictionary $objectCopy `
+            -Name $propertyName) {
             throw "Corrupt LOS registry: duplicate property '$propertyName'."
         }
 

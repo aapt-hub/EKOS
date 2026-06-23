@@ -219,9 +219,15 @@ function Get-LosLifecycleValue {
         [string]$Name
     )
 
-    if ($InputObject -is [Collections.IDictionary] -and
-        $InputObject.Contains($Name)) {
-        return $InputObject[$Name]
+    if ($InputObject -is [System.Collections.IDictionary]) {
+        foreach ($key in $InputObject.Keys) {
+            if ([StringComparer]::Ordinal.Equals(
+                [string]$key,
+                $Name
+            )) {
+                return $InputObject[$key]
+            }
+        }
     }
 
     $containsKey = $InputObject.PSObject.Methods['ContainsKey']
@@ -689,6 +695,7 @@ function Invoke-LifecycleExecution {
     $attestationId = ''
     $ledgerEntryId = ''
     $parityValidated = $false
+    $schemaHash = ''
 
     Add-LosLifecycleTrace `
         -State $state `
@@ -709,6 +716,7 @@ function Invoke-LifecycleExecution {
             -InputPayload $InputPayload `
             -ExecutionContext $ExecutionContext
         $execution = 'SUCCESS'
+        $schemaHash = [string]$executionResult.SchemaHash
 
         $postflightResult = Invoke-POSTFlightValidation `
             -State $state `
@@ -773,6 +781,7 @@ function Invoke-LifecycleExecution {
         execution        = $execution
         postflight       = $postflight
         finalVerdict     = $finalVerdict
+        schemaHash       = $schemaHash
         executionTrace   = @($state.Trace.ToArray())
         attestationId    = $attestationId
         ledgerEntryId    = $ledgerEntryId

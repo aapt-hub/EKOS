@@ -4,6 +4,7 @@ $ErrorActionPreference = 'Stop'
 $script:ModuleRoot = Split-Path -Parent $PSCommandPath
 $script:CanonicalSerializerPath = Join-Path $script:ModuleRoot 'EKOS.CanonicalSerializer.psm1'
 $script:BrokerPath = Join-Path $script:ModuleRoot 'LOS.ContractRuntimeBroker.psm1'
+$script:LifecycleEnforcerPath = Join-Path $script:ModuleRoot 'LOS.ExecutionLifecycleEnforcer.psm1'
 $script:ContractSystemPath = Join-Path $script:ModuleRoot 'LOS.ContractSystem.psm1'
 $script:IntegrityGuardPath = Join-Path $script:ModuleRoot 'LOS.ContractIntegrityGuard.psm1'
 
@@ -187,7 +188,7 @@ function New-LosExecutionChildScript {
     $envelopeJson = ConvertTo-EkosCanonicalJson -InputObject $envelope
     $encodedEnvelope = ConvertTo-LosBase64 -Value $envelopeJson
     $prelude = New-LosChildPrelude -ModulePaths @(
-        $script:BrokerPath,
+        $script:LifecycleEnforcerPath,
         $script:CanonicalSerializerPath
     )
 
@@ -207,24 +208,49 @@ if (`$null -ne `$input.executionContext) {
         `$context[[string]`$property.Name] = `$property.Value
     }
 }
-`$operation = {
-    param([hashtable]`$Context)
-    return [pscustomobject][ordered]@{
-        ContractId = [string]`$Context.Contract.contractId
-        Request    = `$Context.Request
-        Context    = `$Context.Context
-    }
+`$lifecycleCommand = Get-Command -Name Invoke-LifecycleExecution -Module LOS.ExecutionLifecycleEnforcer -ErrorAction Stop
+`$lifecycleParameters = @{
+    ContractId       = [string]`$input.contractId
+    ContractVersion  = [string]`$input.contractVersion
+    InputPayload     = `$request
+    ExecutionContext = `$context
 }
-`$brokerCommand = Get-Command -Name Invoke-ContractedExecution -Module LOS.ContractRuntimeBroker -ErrorAction Stop
-`$brokerParameters = @{
-    ContractId = [string]`$input.contractId
-    Version    = [string]`$input.contractVersion
-    Operation  = `$operation
-    Request    = `$request
-    Context    = `$context
+`$lifecycleResult = & `$lifecycleCommand @lifecycleParameters
+`$completed = [string]::Equals(
+    [string]`$lifecycleResult.finalVerdict,
+    'CERTIFIED',
+    [StringComparison]::Ordinal
+)
+`$schemaHash = ''
+if (`$null -ne `$lifecycleResult.PSObject.Properties['schemaHash']) {
+    `$schemaHash = [string]`$lifecycleResult.schemaHash
 }
-`$result = & `$brokerCommand @brokerParameters
-`$trace = `$result.Audit
+`$trace = [pscustomobject][ordered]@{
+    ContractResolved      = [bool]`$completed
+    SchemaLoaded          = [bool]`$completed
+    VersionValidated      = [bool]`$completed
+    SchemaValidated       = [bool]`$completed
+    IntegrityVerified     = [bool]`$completed
+    PreflightExecuted     = [bool]([string]::Equals([string]`$lifecycleResult.preflight, 'PASS', [StringComparison]::Ordinal))
+    PostflightValidated   = [bool]([string]::Equals([string]`$lifecycleResult.postflight, 'PASS', [StringComparison]::Ordinal))
+    AuditRecordFinalized  = [bool]`$completed
+    ExecutionResult       = `$lifecycleResult
+    LifecycleTrace        = @(`$lifecycleResult.executionTrace)
+}
+`$result = [pscustomobject][ordered]@{
+    Status     = if (`$completed) { 'Completed' } else { 'Blocked' }
+    ContractId = [string]`$lifecycleResult.contractId
+    Version    = [string]`$lifecycleResult.version
+    SchemaHash = `$schemaHash
+    Result     = `$lifecycleResult
+    Audit      = `$trace
+    Error      = if (`$completed) { `$null } else { [pscustomobject][ordered]@{
+        Type     = 'LOS.LifecycleCertificationFailure'
+        Message  = [string]`$lifecycleResult.finalVerdict
+        Category = 'InvalidResult'
+        Target   = [string]`$lifecycleResult.contractId
+    } }
+}
 `$attestation = [pscustomobject][ordered]@{
     ContractId       = [string]`$result.ContractId
     Version          = [string]`$result.Version
@@ -453,7 +479,7 @@ catch {
     function Invoke-LosCertificationResolveAttestation {
         param(`$ContractId, `$ContractVersion)
         `$runtimeCommand = Get-LosDcekCommand -Module `$script:RuntimeModule -CommandName Get-EkosRuntimeInfo
-        `$runtimeInfo = & `$runtimeCommand
+        `$runtimeInfo = Get-LosCanonicalRuntimeContext -RuntimeContext (& `$runtimeCommand)
         `$integrityCommand = Get-LosDcekCommand -Module `$script:IntegrityModule -CommandName Invoke-IntegrityCheck
         return & `$integrityCommand -Phase Resolve -ContractId `$ContractId -Version `$ContractVersion -RuntimeContext `$runtimeInfo
     }
@@ -542,7 +568,7 @@ $prelude
     function Invoke-LosCertificationResolveAttestation {
         param(`$ContractId, `$ContractVersion)
         `$runtimeCommand = Get-LosDcekCommand -Module `$script:RuntimeModule -CommandName Get-EkosRuntimeInfo
-        `$runtimeInfo = & `$runtimeCommand
+        `$runtimeInfo = Get-LosCanonicalRuntimeContext -RuntimeContext (& `$runtimeCommand)
         `$integrityCommand = Get-LosDcekCommand -Module `$script:IntegrityModule -CommandName Invoke-IntegrityCheck
         return & `$integrityCommand -Phase Resolve -ContractId `$ContractId -Version `$ContractVersion -RuntimeContext `$runtimeInfo
     }

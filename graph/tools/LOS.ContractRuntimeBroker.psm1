@@ -115,25 +115,237 @@ function ConvertTo-LosContextHashtable {
     return $result
 }
 
-function Get-LosBrokerCallerModule {
+function Get-LosCanonicalRuntimeContext {
     [CmdletBinding()]
-    param()
+    param(
+        [Parameter(Mandatory)]
+        [AllowNull()]
+        [object]$RuntimeContext
+    )
 
-    foreach ($frame in Get-PSCallStack) {
-        $module = $frame.InvocationInfo.MyCommand.Module
-        if ($null -eq $module) {
-            continue
-        }
-
-        if (-not [System.StringComparer]::Ordinal.Equals(
-            [string]$module.Name,
-            'LOS.ContractRuntimeBroker'
-        )) {
-            return $module
+    $runtime = ''
+    if ($null -ne $RuntimeContext) {
+        $runtimeProperty = $RuntimeContext.PSObject.Properties['Runtime']
+        if ($null -ne $runtimeProperty) {
+            $runtime = [string]$runtimeProperty.Value
         }
     }
 
-    return $null
+    if ([string]::IsNullOrEmpty($runtime)) {
+        $editionProperty = if ($null -eq $RuntimeContext) {
+            $null
+        }
+        else {
+            $RuntimeContext.PSObject.Properties['Edition']
+        }
+
+        if ($null -ne $editionProperty) {
+            $edition = [string]$editionProperty.Value
+            if ([System.StringComparer]::Ordinal.Equals($edition, 'Desktop')) {
+                $runtime = 'PS5'
+            }
+            elseif ([System.StringComparer]::Ordinal.Equals($edition, 'Core')) {
+                $runtime = 'PS7'
+            }
+        }
+    }
+
+    if ([string]::IsNullOrEmpty($runtime)) {
+        $versionProperty = if ($null -eq $RuntimeContext) {
+            $null
+        }
+        else {
+            $RuntimeContext.PSObject.Properties['PSVersion']
+        }
+
+        if ($null -ne $versionProperty) {
+            $version = [version]([string]$versionProperty.Value)
+            if ($version.Major -eq 5) {
+                $runtime = 'PS5'
+            }
+            elseif ($version.Major -ge 7) {
+                $runtime = 'PS7'
+            }
+        }
+    }
+
+    if ([System.StringComparer]::Ordinal.Equals($runtime, 'PS5')) {
+        return [PSCustomObject][ordered]@{
+            Runtime   = 'PS5'
+            Edition   = 'Desktop'
+            PSVersion = '5.1'
+        }
+    }
+
+    if ([System.StringComparer]::Ordinal.Equals($runtime, 'PS7')) {
+        return [PSCustomObject][ordered]@{
+            Runtime   = 'PS7'
+            Edition   = 'Core'
+            PSVersion = '7.0'
+        }
+    }
+
+    throw 'LOS runtime context cannot be normalized to PS5 or PS7.'
+}
+
+function Resolve-LosBrokerPath {
+    [CmdletBinding()]
+    param(
+        [Parameter()]
+        [AllowEmptyString()]
+        [string]$Path
+    )
+
+    if ([string]::IsNullOrEmpty($Path)) {
+        return ''
+    }
+
+    try {
+        return [System.IO.Path]::GetFullPath($Path)
+    }
+    catch {
+        return ''
+    }
+}
+
+function Get-LosBrokerStackFrameValue {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [object]$InputObject,
+
+        [Parameter(Mandatory)]
+        [string]$Name
+    )
+
+    if ($null -eq $InputObject) {
+        return $null
+    }
+
+    $property = $InputObject.PSObject.Properties[$Name]
+    if ($null -eq $property) {
+        return $null
+    }
+
+    return $property.Value
+}
+
+function Test-LosBrokerAuthorizedCaller {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$ExpectedCallerPath
+    )
+
+    $expectedPath = Resolve-LosBrokerPath -Path $ExpectedCallerPath
+    $expectedName = 'LOS.ExecutionLifecycleEnforcer'
+    $brokerPath = Resolve-LosBrokerPath -Path $PSCommandPath
+    $lastCallerName = ''
+    $lastCallerPath = ''
+
+    foreach ($frame in Get-PSCallStack) {
+        $invocation = Get-LosBrokerStackFrameValue `
+            -InputObject $frame `
+            -Name 'InvocationInfo'
+        $command = if ($null -eq $invocation) {
+            $null
+        }
+        else {
+            Get-LosBrokerStackFrameValue `
+                -InputObject $invocation `
+                -Name 'MyCommand'
+        }
+        $module = if ($null -eq $command) {
+            $null
+        }
+        else {
+            Get-LosBrokerStackFrameValue `
+                -InputObject $command `
+                -Name 'Module'
+        }
+
+        $moduleName = ''
+        if ($null -ne $module) {
+            $moduleName = [string](Get-LosBrokerStackFrameValue `
+                -InputObject $module `
+                -Name 'Name')
+        }
+        if ([string]::IsNullOrEmpty($moduleName) -and $null -ne $command) {
+            $moduleName = [string](Get-LosBrokerStackFrameValue `
+                -InputObject $command `
+                -Name 'ModuleName')
+        }
+
+        $candidatePaths = New-Object 'System.Collections.Generic.List[string]'
+        if ($null -ne $module) {
+            $candidatePaths.Add([string](Get-LosBrokerStackFrameValue `
+                -InputObject $module `
+                -Name 'Path'))
+        }
+        $candidatePaths.Add([string](Get-LosBrokerStackFrameValue `
+            -InputObject $frame `
+            -Name 'ScriptName'))
+        if ($null -ne $invocation) {
+            $candidatePaths.Add([string](Get-LosBrokerStackFrameValue `
+                -InputObject $invocation `
+                -Name 'ScriptName'))
+            $candidatePaths.Add([string](Get-LosBrokerStackFrameValue `
+                -InputObject $invocation `
+                -Name 'PSCommandPath'))
+        }
+        if ($null -ne $command) {
+            $scriptBlock = Get-LosBrokerStackFrameValue `
+                -InputObject $command `
+                -Name 'ScriptBlock'
+            if ($null -ne $scriptBlock) {
+                $candidatePaths.Add([string](Get-LosBrokerStackFrameValue `
+                    -InputObject $scriptBlock `
+                    -Name 'File'))
+            }
+        }
+
+        foreach ($candidatePath in $candidatePaths) {
+            $resolvedPath = Resolve-LosBrokerPath -Path $candidatePath
+            if ([string]::IsNullOrEmpty($resolvedPath)) {
+                continue
+            }
+
+            if ([System.StringComparer]::OrdinalIgnoreCase.Equals(
+                $resolvedPath,
+                $brokerPath
+            )) {
+                continue
+            }
+
+            $lastCallerName = $moduleName
+            $lastCallerPath = $resolvedPath
+
+            if (-not [System.StringComparer]::OrdinalIgnoreCase.Equals(
+                $resolvedPath,
+                $expectedPath
+            )) {
+                continue
+            }
+
+            if ([string]::IsNullOrEmpty($moduleName) -or
+                [System.StringComparer]::Ordinal.Equals(
+                    $moduleName,
+                    $expectedName
+                )) {
+                return [PSCustomObject][ordered]@{
+                    Authorized = $true
+                    CallerName = $expectedName
+                    CallerPath = $resolvedPath
+                }
+            }
+        }
+    }
+
+    return [PSCustomObject][ordered]@{
+        Authorized = $false
+        CallerName = $lastCallerName
+        CallerPath = $lastCallerPath
+    }
 }
 
 function Invoke-ContractedExecution {
@@ -225,37 +437,17 @@ function Invoke-ContractedExecution {
     $attestation = $null
 
     try {
-        $callerModule = Get-LosBrokerCallerModule
         $expectedCallerPath = Join-Path `
             $PSScriptRoot `
             'LOS.ExecutionLifecycleEnforcer.psm1'
-        $callerName = if ($null -eq $callerModule) {
-            ''
-        }
-        else {
-            [string]$callerModule.Name
-        }
-        $callerPath = if ($null -eq $callerModule) {
-            ''
-        }
-        else {
-            [string]$callerModule.Path
-        }
-        $authorizedCaller = (
-            [System.StringComparer]::Ordinal.Equals(
-                $callerName,
-                'LOS.ExecutionLifecycleEnforcer'
-            ) -and
-            [System.StringComparer]::OrdinalIgnoreCase.Equals(
-                [System.IO.Path]::GetFullPath($callerPath),
-                [System.IO.Path]::GetFullPath($expectedCallerPath)
-            )
-        )
-        if (-not $authorizedCaller) {
-            throw "LOS lifecycle violation: unauthorized broker caller '$callerName'."
+        $callerAuthorization = Test-LosBrokerAuthorizedCaller `
+            -ExpectedCallerPath $expectedCallerPath
+        if (-not [bool]$callerAuthorization.Authorized) {
+            throw "LOS lifecycle violation: unauthorized broker caller '$($callerAuthorization.CallerName)'."
         }
 
-        $runtimeContext = & $runtimeInfoCommand
+        $runtimeContext = Get-LosCanonicalRuntimeContext `
+            -RuntimeContext (& $runtimeInfoCommand)
         $attestation = & $integrityCommand `
             -Phase 'Resolve' `
             -ContractId $ContractId `

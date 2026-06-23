@@ -87,9 +87,15 @@ function Get-LosDriftValue {
         [string]$Name
     )
 
-    if ($InputObject -is [Collections.IDictionary] -and
-        $InputObject.Contains($Name)) {
-        return $InputObject[$Name]
+    if ($InputObject -is [System.Collections.IDictionary]) {
+        foreach ($key in $InputObject.Keys) {
+            if ([StringComparer]::Ordinal.Equals(
+                [string]$key,
+                $Name
+            )) {
+                return $InputObject[$key]
+            }
+        }
     }
 
     $containsKey = $InputObject.PSObject.Methods['ContainsKey']
