@@ -209,6 +209,34 @@ function ConvertTo-LosLifecycleHashtable {
     return $result
 }
 
+function Get-LosLifecycleValue {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [object]$InputObject,
+
+        [Parameter(Mandatory)]
+        [string]$Name
+    )
+
+    if ($InputObject -is [Collections.IDictionary] -and
+        $InputObject.Contains($Name)) {
+        return $InputObject[$Name]
+    }
+
+    $containsKey = $InputObject.PSObject.Methods['ContainsKey']
+    if ($null -ne $containsKey -and
+        [bool]$InputObject.ContainsKey($Name)) {
+        return $InputObject[$Name]
+    }
+
+    $property = $InputObject.PSObject.Properties[$Name]
+    if ($null -eq $property) {
+        throw "LOS lifecycle result is missing '$Name'."
+    }
+    return $property.Value
+}
+
 function Get-LosLifecycleHash {
     [CmdletBinding()]
     param(
@@ -506,8 +534,12 @@ function Invoke-POSTFlightValidation {
         -ExecutionRecord $attestationInput
 
     if ($null -eq $attestation -or
-        [string]::IsNullOrEmpty([string]$attestation.AttestationId) -or
-        -not [bool]$attestation.IsValid) {
+        [string]::IsNullOrEmpty(
+            [string](Get-LosLifecycleValue `
+                $attestation `
+                'attestationId')
+        ) -or
+        -not [bool](Get-LosLifecycleValue $attestation 'isValid')) {
         throw 'LOS lifecycle postflight failed: execution attestation is invalid.'
     }
 
@@ -521,9 +553,13 @@ function Invoke-POSTFlightValidation {
     }
     $ledgerEntry = & $ledgerCommand -Entry $ledgerInput
     if ($null -eq $ledgerEntry -or
-        [string]::IsNullOrEmpty([string]$ledgerEntry.LedgerEntryId) -or
-        -not [bool]$ledgerEntry.Accepted -or
-        [bool]$ledgerEntry.ReplayDetected) {
+        [string]::IsNullOrEmpty(
+            [string](Get-LosLifecycleValue `
+                $ledgerEntry `
+                'ledgerEntryId')
+        ) -or
+        -not [bool](Get-LosLifecycleValue $ledgerEntry 'Accepted') -or
+        [bool](Get-LosLifecycleValue $ledgerEntry 'ReplayDetected')) {
         throw 'LOS lifecycle postflight failed: ledger rejected the execution.'
     }
 
@@ -544,7 +580,9 @@ function Invoke-POSTFlightValidation {
     $parityValidated = (
         [bool]$PreflightResult.Compatibility.matrix.PS5 -and
         [bool]$PreflightResult.Compatibility.matrix.PS7 -and
-        [bool]$attestation.ParityValidated
+        [bool](Get-LosLifecycleValue `
+            $attestation `
+            'parityValidated')
     )
     if (-not $parityValidated) {
         throw 'LOS lifecycle postflight failed: PS5/PS7 parity was not validated.'
@@ -587,8 +625,12 @@ function Invoke-POSTFlightValidation {
         -Outcome $(if ($driftDetected) { 'DRIFT_DETECTED' } else { 'PASS' })
 
     return [pscustomobject][ordered]@{
-        AttestationId  = [string]$attestation.AttestationId
-        LedgerEntryId  = [string]$ledgerEntry.LedgerEntryId
+        AttestationId  = [string](Get-LosLifecycleValue `
+            $attestation `
+            'attestationId')
+        LedgerEntryId  = [string](Get-LosLifecycleValue `
+            $ledgerEntry `
+            'ledgerEntryId')
         ParityValidated = $parityValidated
         DriftDetected  = $driftDetected
     }
