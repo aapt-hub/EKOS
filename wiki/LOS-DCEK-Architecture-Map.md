@@ -1,5 +1,9 @@
 # LOS DCEK Architecture Map
 
+This page documents existing DCEK graph/tool harness modules under `graph/tools/`.
+It does not mean Phase 2.6 Governance Enforcement, Phase 3 Runtime Certification,
+the LOS governance validator, or repository-wide runtime blocking is implemented.
+
 ## Stabilized Execution Path
 
 The stabilized LOS DCEK certification path is:

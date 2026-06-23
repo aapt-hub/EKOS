@@ -1,11 +1,17 @@
 # EKOS Wiki
 
-This folder holds M2.x documentation for the EKOS/PETOS layered architecture.
+This folder holds documentation for the EKOS/PETOS layered architecture.
 
-## M2.7 Changes
+## Current Documentation Coverage (Documentation Sync)
 
-- Added the M2.7 layer model and audit-issue automation documentation:
-  - `Architecture-M2.7.md`
-  - `Audit-Issue-Automation.md`
-  - `Roadmap-M2.7.md`
+Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
 
+### Planned M2.7 Documentation — Not Implemented as a Milestone
+- `Architecture-M2.7.md`
+- `Audit-Issue-Automation.md`
+- `Roadmap-M2.7.md`
+
+### LOS — Governance Foundation (Phase 2.5)
+- `LOS-Governance.md`
+
+(Documentation sync only; no new runtime modules, governance validator, certification pipeline, or enforcement code is added.)

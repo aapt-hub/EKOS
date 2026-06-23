@@ -1,10 +1,11 @@
-# Roadmap
+# Roadmap — Planned M2.7 Documentation
 
 Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
 
-## Phase 2.5 Governance Foundation (COMPLETE)
+## Current Implemented State
 
-- Evidence in the repository:
+- Phase 2.5 Governance Foundation: COMPLETE
+- Evidence:
   - `los/contracts/EKOS.Execute/1.0.0/contract.json`
   - `los/schemas/execution-result/1.0.0/schema.json`
   - `los/attestations/contract/EKOS.Execute/1.0.0/attestation.json`
@@ -16,11 +17,11 @@ Repository implementation is the source of truth. Documentation must not describ
 
 ## Planned
 
-- M2.7 layer model and documentation/state updates are not implemented as a milestone.
-- Audit issue automation documentation references existing files under `ekos/audit/`, but this does not make M2.7 complete.
+- M2.7 documentation/state updates are not implemented as a milestone.
+- M2.7 layer scaffold documentation remains planned unless backed by implementation evidence.
+- Audit issue automation documentation may reference existing files under `ekos/audit/`, but that does not certify M2.7 completion.
 
-## Not Implemented Yet
-
+## Not Yet Implemented (Documented Future)
 - Phase 2.6 Governance Enforcement: NOT STARTED
 - `los/registries/LOS.GovernanceValidator.psm1`
 - Runtime enforcement gate
@@ -30,7 +31,3 @@ Repository implementation is the source of truth. Documentation must not describ
 ## Blocked
 
 - Phase 3 Runtime Certification: BLOCKED until Phase 2.6 Governance Enforcement is complete.
-- Remaining PETOS / EKOS / compute-fabric / training-fabric milestones listed in the M3.x roadmap
-
-
-

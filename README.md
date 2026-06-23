@@ -1,5 +1,5 @@
 # EKOS
- EKOS (Enterprise Engineering Knowledge Operating System)
+EKOS (Enterprise Engineering Knowledge Operating System)
 =======
 ﻿# EKOS / PETOS
 
@@ -274,6 +274,18 @@ Invoke-EKOSQuery @{
 ---
 
 ## 🛣️ Roadmap
+
+## Phase Status (Documentation)
+
+Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
+
+- Phase 2.5 — **LOS Governance Foundation: COMPLETE**
+- Phase 2.6 — Governance Enforcement: NOT STARTED
+- Phase 3 — Runtime Certification: BLOCKED until Phase 2.6 is complete
+
+---
+
+## Next EKOS.Graph v3 Build Items (Existing docs)
 
 v3.1:
 - Adaptive cost tuning
