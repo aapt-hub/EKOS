@@ -7,9 +7,7 @@ function New-LosArtifactAttestation {
         [string] $ArtifactPath,
 
         [Parameter(Mandatory)]
-        [string] $ArtifactType,
-
-        [string] $RootPath = (Resolve-Path "$PSScriptRoot\..\..").Path
+        [string] $ArtifactType
     )
 
     Import-Module (Join-Path $PSScriptRoot "LOS.ArtifactLoader.psm1") -Force
@@ -17,12 +15,12 @@ function New-LosArtifactAttestation {
     $artifact = Import-LosJsonArtifact -Path $ArtifactPath
 
     [PSCustomObject]@{
-        ArtifactType = $ArtifactType
-        ArtifactPath = $artifact.Path
-        HashAlgorithm = $artifact.Algorithm
-        ArtifactHash = $artifact.Hash
-        AttestedUtc = (Get-Date).ToUniversalTime().ToString("o")
-        AttestationVersion = "1.0.0"
+        ArtifactType        = $ArtifactType
+        ArtifactPath        = $artifact.Path
+        HashAlgorithm       = $artifact.Algorithm
+        ArtifactHash        = $artifact.Hash
+        AttestedUtc         = (Get-Date).ToUniversalTime().ToString("o")
+        AttestationVersion  = "1.0.0"
     }
 }
 
