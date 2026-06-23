@@ -30,6 +30,18 @@ ekos.transaction.validation.json
 # If you want strict versioning later, we can move these to /graph/artifacts/
 
 # =========================================================
+# EKOS AUDIT / DRY-RUN OUTPUT
+# =========================================================
+
+artifacts/
+
+# =========================================================
+# LEGACY LOCAL WIKI EXPORTS
+# =========================================================
+
+github-wiki/
+
+# =========================================================
 # TEMP / TOOLING OUTPUT
 # =========================================================
 
@@ -69,3 +81,4 @@ Thumbs.db
 # =========================================================
 # Keep graph definitions (*.ps1, *.cs, *.md, *.json schema files)
 # DO NOT ignore source-level EKOS architecture definitions.
+github-wiki/
