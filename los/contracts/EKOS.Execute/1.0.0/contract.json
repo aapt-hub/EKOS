@@ -1,0 +1,8 @@
+{
+  "contractId": "EKOS.Execute",
+  "version": "1.0.0",
+  "inputSchema": "execution-request:1.0.0",
+  "outputSchema": "execution-result:1.0.0",
+  "runtime": ["PS5", "PS7"],
+  "deterministic": true
+}

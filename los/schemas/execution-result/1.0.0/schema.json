@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionResult",
+  "type": "object",
+  "required": ["Runtime", "InputHash", "OutputHash", "DeterministicSignature"]
+}
