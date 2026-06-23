@@ -221,6 +221,13 @@ if (`$null -ne `$input.executionContext) {
     'CERTIFIED',
     [StringComparison]::Ordinal
 )
+`$errorMessage = [string]`$lifecycleResult.finalVerdict
+foreach (`$traceEvent in @(`$lifecycleResult.executionTrace)) {
+    if ([string]::Equals([string]`$traceEvent.outcome, 'HARD_BLOCK', [StringComparison]::Ordinal) -and
+        -not [string]::IsNullOrEmpty([string]`$traceEvent.detail)) {
+        `$errorMessage = [string]`$traceEvent.detail
+    }
+}
 `$schemaHash = ''
 if (`$null -ne `$lifecycleResult.PSObject.Properties['schemaHash']) {
     `$schemaHash = [string]`$lifecycleResult.schemaHash
@@ -246,7 +253,7 @@ if (`$null -ne `$lifecycleResult.PSObject.Properties['schemaHash']) {
     Audit      = `$trace
     Error      = if (`$completed) { `$null } else { [pscustomobject][ordered]@{
         Type     = 'LOS.LifecycleCertificationFailure'
-        Message  = [string]`$lifecycleResult.finalVerdict
+        Message  = `$errorMessage
         Category = 'InvalidResult'
         Target   = [string]`$lifecycleResult.contractId
     } }

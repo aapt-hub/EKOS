@@ -123,24 +123,55 @@ function Get-LosCanonicalRuntimeContext {
         [object]$RuntimeContext
     )
 
-    $runtime = ''
-    if ($null -ne $RuntimeContext) {
-        $runtimeProperty = $RuntimeContext.PSObject.Properties['Runtime']
-        if ($null -ne $runtimeProperty) {
-            $runtime = [string]$runtimeProperty.Value
+    function Get-LosRuntimeContextValue {
+        param(
+            [Parameter(Mandatory)]
+            [AllowNull()]
+            [object]$InputObject,
+
+            [Parameter(Mandatory)]
+            [string]$Name
+        )
+
+        if ($null -eq $InputObject) {
+            return $null
         }
+
+        if ($InputObject -is [System.Collections.IDictionary]) {
+            foreach ($key in $InputObject.Keys) {
+                if ([System.StringComparer]::Ordinal.Equals(
+                    [string]$key,
+                    $Name
+                )) {
+                    return $InputObject[$key]
+                }
+            }
+
+            return $null
+        }
+
+        $property = $InputObject.PSObject.Properties[$Name]
+        if ($null -eq $property) {
+            return $null
+        }
+
+        return $property.Value
+    }
+
+    $runtime = ''
+    $runtimeValue = Get-LosRuntimeContextValue `
+        -InputObject $RuntimeContext `
+        -Name 'Runtime'
+    if ($null -ne $runtimeValue) {
+        $runtime = [string]$runtimeValue
     }
 
     if ([string]::IsNullOrEmpty($runtime)) {
-        $editionProperty = if ($null -eq $RuntimeContext) {
-            $null
-        }
-        else {
-            $RuntimeContext.PSObject.Properties['Edition']
-        }
-
-        if ($null -ne $editionProperty) {
-            $edition = [string]$editionProperty.Value
+        $editionValue = Get-LosRuntimeContextValue `
+            -InputObject $RuntimeContext `
+            -Name 'Edition'
+        if ($null -ne $editionValue) {
+            $edition = [string]$editionValue
             if ([System.StringComparer]::Ordinal.Equals($edition, 'Desktop')) {
                 $runtime = 'PS5'
             }
@@ -151,15 +182,11 @@ function Get-LosCanonicalRuntimeContext {
     }
 
     if ([string]::IsNullOrEmpty($runtime)) {
-        $versionProperty = if ($null -eq $RuntimeContext) {
-            $null
-        }
-        else {
-            $RuntimeContext.PSObject.Properties['PSVersion']
-        }
-
-        if ($null -ne $versionProperty) {
-            $version = [version]([string]$versionProperty.Value)
+        $versionValue = Get-LosRuntimeContextValue `
+            -InputObject $RuntimeContext `
+            -Name 'PSVersion'
+        if ($null -ne $versionValue) {
+            $version = [version]([string]$versionValue)
             if ($version.Major -eq 5) {
                 $runtime = 'PS5'
             }
@@ -330,6 +357,10 @@ function Test-LosBrokerAuthorizedCaller {
             if ([string]::IsNullOrEmpty($moduleName) -or
                 [System.StringComparer]::Ordinal.Equals(
                     $moduleName,
+                    $expectedName
+                ) -or
+                [System.StringComparer]::OrdinalIgnoreCase.Equals(
+                    [System.IO.Path]::GetFileNameWithoutExtension($resolvedPath),
                     $expectedName
                 )) {
                 return [PSCustomObject][ordered]@{
