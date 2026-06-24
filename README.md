@@ -35,31 +35,41 @@ Contract
 -> Trust Monitoring
 -> Trust Enforcement
 -> Trust Recovery
+-> Revalidation
+-> Trust Authority Review
+-> Active
 ```
 
 ## Current Implementation Status
 
-Implemented through M2.10:
+Implemented through M2.11:
 
 - M2.6 Governance Enforcement
 - M2.7 Runtime Certification
 - M2.8 Runtime Trust Authority
 - M2.9 Runtime Trust Monitoring
 - M2.10 Runtime Trust Enforcement
-
-Next milestone:
-
 - M2.11 Runtime Trust Recovery
 
-Planned after M2.11:
+Planned:
 
 - M2.12 Trust Policy Engine
 - M2.13 Runtime Trust Dashboard
 - Phase 3 Runtime Authority Kernel
 
+## Runtime Trust Recovery
+
+Capability ID: LOS-TRUST-004  
+Roadmap Milestone: M2.11  
+Name: Runtime Trust Recovery  
+Domain: Trust  
+Layer: LOS Trust Authority Layer
+
+M2.11 is roadmap tracking only. LOS-TRUST-004 is the architectural capability. Recovery approval does not restore trust; it authorizes revalidation. A subject may return to Active only after certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
+
 ## Repository Structure
 
-- `los/`: Logic Operating System truth, governance, certification, trust authority, monitoring, and enforcement.
+- `los/`: Logic Operating System truth, governance, certification, trust authority, monitoring, enforcement, and recovery.
 - `ekos/`: Execution Runtime Engine modules and audit orchestration.
 - `petos/`: Application Framework Layer boundary.
 - `graph/`: Graph runtime and canonical serialization tooling.

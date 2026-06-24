@@ -17,7 +17,7 @@ Documents current runtime authority dependencies without changing implementation
 ## Runtime Chain
 
 ```text
-Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execution -> Certification -> Trust Authority -> Trust Monitoring -> Trust Enforcement
+Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execution -> Certification -> Trust Authority -> Trust Monitoring -> Trust Enforcement -> Trust Recovery -> Revalidation -> Trust Authority Review -> Active
 ```
 
 ## Key Dependencies
@@ -27,6 +27,7 @@ Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execu
 - Trust Authority depends on governance and certification results.
 - Trust Monitoring depends on trust ledger, certification ledger, trust scoring, and trust alerts.
 - Trust Enforcement depends on trust status, trust score, alert severity, and enforcement state persistence.
+- Trust Recovery depends on enforcement state, structured recovery evidence, certification validation, attestation validation, policy validation, and trust authority review.
 
 ## External Dependencies
 
