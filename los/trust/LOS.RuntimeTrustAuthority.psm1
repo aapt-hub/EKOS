@@ -84,4 +84,39 @@ function Invoke-LOSRuntimeTrustAuthority {
     }
 }
 
-Export-ModuleMember -Function Invoke-LOSRuntimeTrustAuthority
+function Invoke-LOSTrustAuthority {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $RootPath,
+
+        [Parameter(Mandatory)]
+        [AllowNull()]
+        [object] $GovernanceResult,
+
+        [Parameter(Mandatory)]
+        [AllowNull()]
+        [object] $CertificationResult,
+
+        [Parameter(Mandatory)]
+        [AllowNull()]
+        [object] $TrustEvidence,
+
+        [string[]] $RequiredCapabilities = @(),
+
+        [string[]] $AllowedRuntimeHashes = @(),
+
+        [string] $TimestampUtc = (Get-Date).ToUniversalTime().ToString("o")
+    )
+
+    Invoke-LOSRuntimeTrustAuthority `
+        -RootPath $RootPath `
+        -GovernanceResult $GovernanceResult `
+        -CertificationResult $CertificationResult `
+        -TrustEvidence $TrustEvidence `
+        -RequiredCapabilities $RequiredCapabilities `
+        -AllowedRuntimeHashes $AllowedRuntimeHashes `
+        -TimestampUtc $TimestampUtc
+}
+
+Export-ModuleMember -Function Invoke-LOSRuntimeTrustAuthority, Invoke-LOSTrustAuthority

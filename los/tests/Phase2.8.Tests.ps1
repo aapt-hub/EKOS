@@ -161,4 +161,57 @@ Describe "LOS Phase 2.8 Runtime Trust Authority" {
         $report.TrustStatus | Should -Be "TRUSTED"
         $report.TrustEvidenceHash | Should -Be $evidence.TrustEvidenceHash
     }
+
+    It "exports compatibility wrapper commands" {
+        Get-Command Invoke-LOSTrustAuthority | Should -Not -BeNullOrEmpty
+        Get-Command Add-LOSTrustRecord | Should -Not -BeNullOrEmpty
+        Get-Command Get-LOSTrustLedger | Should -Not -BeNullOrEmpty
+        Get-Command Get-LOSTrustRecord | Should -Not -BeNullOrEmpty
+        Get-Command Test-LOSTrustLedgerIntegrity | Should -Not -BeNullOrEmpty
+    }
+
+    It "compatibility trust authority wrapper delegates to runtime trust authority" {
+        $tempRoot = New-TestTrustRoot
+        try {
+            $evidence = New-ReferenceTrustEvidence
+            $governance = [PSCustomObject][ordered]@{ Decision = "ALLOW" }
+            $certification = [PSCustomObject][ordered]@{ CertificationStatus = "PASS" }
+
+            $result = Invoke-LOSTrustAuthority -RootPath $tempRoot -GovernanceResult $governance -CertificationResult $certification -TrustEvidence $evidence -RequiredCapabilities @("execute") -AllowedRuntimeHashes @("runtime-hash-1") -TimestampUtc "2026-06-23T00:00:00.0000000Z"
+
+            $result.Success | Should -BeTrue
+            $result.Decision | Should -Be "ALLOW"
+            $result.TrustStatus | Should -Be "TRUSTED"
+        }
+        finally {
+            Remove-Item -LiteralPath $tempRoot -Recurse -Force
+        }
+    }
+
+    It "compatibility ledger wrappers add, list, fetch, and validate records" {
+        $tempRoot = New-TestTrustRoot
+        try {
+            $entry = [PSCustomObject][ordered]@{
+                TrustId           = "trust-record-1"
+                TimestampUtc      = "2026-06-23T00:00:00.0000000Z"
+                Decision          = "ALLOW"
+                TrustStatus       = "TRUSTED"
+                Reason            = "TrustedRuntime"
+                TrustEvidenceHash = "hash-1"
+            }
+
+            Add-LOSTrustRecord -RootPath $tempRoot -Entry $entry | Out-Null
+            $rows = @(Get-LOSTrustLedger -RootPath $tempRoot)
+            $record = Get-LOSTrustRecord -RootPath $tempRoot -TrustId "trust-record-1"
+            $integrity = Test-LOSTrustLedgerIntegrity -RootPath $tempRoot
+
+            $rows.Count | Should -Be 1
+            $record.TrustEvidenceHash | Should -Be "hash-1"
+            $integrity.Valid | Should -BeTrue
+            $integrity.Count | Should -Be 1
+        }
+        finally {
+            Remove-Item -LiteralPath $tempRoot -Recurse -Force
+        }
+    }
 }

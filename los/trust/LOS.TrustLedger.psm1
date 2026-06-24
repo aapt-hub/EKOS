@@ -60,4 +60,112 @@ function Read-LOSTrustLedger {
     return $rows
 }
 
-Export-ModuleMember -Function Write-LOSTrustLedger, Read-LOSTrustLedger
+function Add-LOSTrustRecord {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $RootPath,
+
+        [Parameter(Mandatory)]
+        [object] $Entry
+    )
+
+    Write-LOSTrustLedger -RootPath $RootPath -Entry $Entry
+}
+
+function Get-LOSTrustLedger {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $RootPath
+    )
+
+    Read-LOSTrustLedger -RootPath $RootPath
+}
+
+function Get-LOSTrustRecord {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $RootPath,
+
+        [Parameter(Mandatory)]
+        [string] $TrustId
+    )
+
+    foreach ($record in @(Read-LOSTrustLedger -RootPath $RootPath)) {
+        $properties = @($record.PSObject.Properties.Name)
+        if ($properties -contains "TrustId" -and $record.TrustId -eq $TrustId) {
+            return $record
+        }
+        if ($properties -contains "TrustEvidenceId" -and $record.TrustEvidenceId -eq $TrustId) {
+            return $record
+        }
+        if ($properties -contains "TrustEvidenceHash" -and $record.TrustEvidenceHash -eq $TrustId) {
+            return $record
+        }
+    }
+
+    return $null
+}
+
+function Test-LOSTrustLedgerIntegrity {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $RootPath
+    )
+
+    try {
+        $records = @(Read-LOSTrustLedger -RootPath $RootPath)
+        $index = 0
+        foreach ($record in $records) {
+            $index++
+            foreach ($requiredProperty in @("TimestampUtc", "Decision", "TrustStatus", "TrustEvidenceHash")) {
+                if ($record.PSObject.Properties.Name -notcontains $requiredProperty) {
+                    return [PSCustomObject][ordered]@{
+                        Success = $false
+                        Valid   = $false
+                        Reason  = "Missing$requiredProperty"
+                        Index   = $index
+                    }
+                }
+            }
+
+            if ($record.Decision -notin @("ALLOW", "DENY")) {
+                return [PSCustomObject][ordered]@{
+                    Success = $false
+                    Valid   = $false
+                    Reason  = "InvalidDecision"
+                    Index   = $index
+                }
+            }
+
+            if ($record.TrustStatus -notin @("TRUSTED", "UNTRUSTED")) {
+                return [PSCustomObject][ordered]@{
+                    Success = $false
+                    Valid   = $false
+                    Reason  = "InvalidTrustStatus"
+                    Index   = $index
+                }
+            }
+        }
+
+        return [PSCustomObject][ordered]@{
+            Success = $true
+            Valid   = $true
+            Reason  = "LedgerIntegrityValid"
+            Count   = $records.Count
+        }
+    }
+    catch {
+        return [PSCustomObject][ordered]@{
+            Success = $false
+            Valid   = $false
+            Reason  = "LedgerIntegrityError"
+            Error   = $_.Exception.Message
+        }
+    }
+}
+
+Export-ModuleMember -Function Write-LOSTrustLedger, Read-LOSTrustLedger, Add-LOSTrustRecord, Get-LOSTrustLedger, Get-LOSTrustRecord, Test-LOSTrustLedgerIntegrity
