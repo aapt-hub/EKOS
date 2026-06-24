@@ -1,3 +1,13 @@
+---
+title: Documentation Inventory
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # Documentation Inventory
 
 ## Purpose
@@ -65,5 +75,5 @@ Local markdown links in the synchronized docs/wiki set were validated with no br
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

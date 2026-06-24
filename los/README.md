@@ -1,10 +1,20 @@
+---
+title: LOS
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # LOS
 
 LOS is the Operating System Truth Kernel for EKOS.
 
 ## Purpose
 
-LOS owns truth contracts, schemas, attestations, governance enforcement, runtime certification, runtime trust authority, continuous trust monitoring, and runtime trust enforcement.
+LOS owns truth contracts, schemas, attestations, governance enforcement, runtime certification, runtime trust authority, continuous trust monitoring, runtime trust enforcement, and runtime trust recovery.
 
 ## Current Runtime Chain
 
@@ -19,6 +29,10 @@ Contract
 -> Trust Authority
 -> Trust Monitoring
 -> Trust Enforcement
+-> Trust Recovery
+-> Revalidation
+-> Trust Authority Review
+-> Active
 ```
 
 ## Implemented Milestones
@@ -28,6 +42,7 @@ Contract
 - M2.8 Runtime Trust Authority
 - M2.9 Runtime Trust Monitoring
 - M2.10 Runtime Trust Enforcement
+- M2.11 Runtime Trust Recovery
 
 ## Subsystems
 
@@ -65,6 +80,9 @@ Located under `los/trust/`.
 - `LOS.TrustAlerts.psm1`
 - `LOS.RuntimeTrustMonitor.psm1`
 - `LOS.RuntimeTrustEnforcement.psm1`
+- `LOS.TrustRecovery.psm1`
+
+Runtime Trust Recovery is capability LOS-TRUST-004. M2.11 is roadmap tracking only. Recovery approval authorizes revalidation; it does not restore trust. Active requires certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
 
 ## Tests
 
@@ -79,5 +97,5 @@ LOS does not own PETOS application behavior or host OS implementation. It provid
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

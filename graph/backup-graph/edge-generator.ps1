@@ -1,3 +1,20 @@
+<#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
 # EKOS Sprint 1 - Edge and Node Generator
 # Converts Markdown documents into deterministic nodes.json and edges.json files.
 

@@ -1,3 +1,13 @@
+---
+title: LOS Authority Boundary
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # LOS Authority Boundary
 
 LOS is the Operating System Truth Kernel and runtime authority boundary for EKOS.

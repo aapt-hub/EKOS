@@ -1,3 +1,13 @@
+---
+title: Roadmap M2.7 Compatibility Page
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # Roadmap M2.7 Compatibility Page
 
 M2.7 Runtime Certification is implemented and covered by `los/tests/Phase2.7.Tests.ps1`.

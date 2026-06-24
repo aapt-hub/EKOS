@@ -1,3 +1,13 @@
+---
+title: EKOS
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # EKOS
 
 EKOS is the Runtime Execution Engine.
@@ -29,5 +39,5 @@ PETOS is the Application Layer. PETOS uses EKOS execution services while remaini
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

@@ -1,3 +1,13 @@
+---
+title: Module Inventory
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # Module Inventory
 
 ## Purpose
@@ -32,6 +42,7 @@ Inventory of EKOS-owned PowerShell modules relevant to current LOS and EKOS runt
 - `los/trust/LOS.TrustAlerts.psm1`: writes, reads, and resolves trust alerts.
 - `los/trust/LOS.RuntimeTrustMonitor.psm1`: performs monitoring passes and health reporting.
 - `los/trust/LOS.RuntimeTrustEnforcement.psm1`: applies quarantine, deny, and revoke enforcement state.
+- `los/trust/LOS.TrustRecovery.psm1`: manages LOS-TRUST-004 recovery requests, approval, revalidation, trust authority review, and recovery ledger events.
 
 ## EKOS Runtime Modules
 
@@ -41,9 +52,9 @@ Inventory of EKOS-owned PowerShell modules relevant to current LOS and EKOS runt
 
 ## Current Maturity
 
-LOS runtime authority is implemented through M2.10. M2.11 through M2.13 and Phase 3 remain planned.
+LOS runtime authority is implemented through M2.11. M2.12 through M2.13 and Phase 3 remain planned.
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

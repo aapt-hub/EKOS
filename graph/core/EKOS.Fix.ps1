@@ -1,3 +1,20 @@
+<#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
 Write-Host "🔧 EKOS.Graph Repair Script Starting..." -ForegroundColor Cyan
 
 $root = "C:\Repos\EKOS\graph\core\EKOS.Graph"
