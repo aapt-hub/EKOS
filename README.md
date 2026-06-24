@@ -42,7 +42,7 @@ Contract
 
 ## Current Implementation Status
 
-Implemented through M2.11:
+Implemented through M2.12:
 
 - M2.6 Governance Enforcement
 - M2.7 Runtime Certification
@@ -50,12 +50,59 @@ Implemented through M2.11:
 - M2.9 Runtime Trust Monitoring
 - M2.10 Runtime Trust Enforcement
 - M2.11 Runtime Trust Recovery
+- M2.12 Runtime Trust Policy Engine
 
 Planned:
 
-- M2.12 Trust Policy Engine
+
 - M2.13 Runtime Trust Dashboard
 - Phase 3 Runtime Authority Kernel
+
+
+## M2.12 Runtime Trust Policy Engine
+
+Capability ID: LOS-TRUST-005
+
+Summary:
+
+- Externalized runtime trust policies into JSON artifacts.
+- Deterministic policy registry.
+- Deterministic policy evaluation.
+- Deterministic policy decision generation.
+- Fail-closed behavior.
+- PS5/PS7 deterministic compatibility.
+
+Policy artifacts:
+
+los/policies/
+
+- TrustScorePolicy.json
+- RecoveryPolicy.json
+- CertificationPolicy.json
+- DriftPolicy.json
+- RuntimePolicy.json
+
+Modules:
+
+- LOS.PolicyRegistry.psm1
+- LOS.PolicyDecision.psm1
+- LOS.TrustPolicy.psm1
+
+Features:
+
+- JSON policy loading
+- Policy validation
+- Deterministic evaluation
+- Deterministic decision precedence
+- Evidence hashing
+- Fail-closed trust evaluation
+- Duplicate PolicyId detection
+- Registry diagnostics
+
+Validation:
+
+- Phase2.12: 12/12 passed
+- Full LOS suite: 99/99 passed
 
 ## Runtime Trust Recovery
 
@@ -66,6 +113,7 @@ Domain: Trust
 Layer: LOS Trust Authority Layer
 
 M2.11 is roadmap tracking only. LOS-TRUST-004 is the architectural capability. Recovery approval does not restore trust; it authorizes revalidation. A subject may return to Active only after certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
+
 
 ## Repository Structure
 

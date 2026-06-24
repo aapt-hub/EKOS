@@ -1,0 +1,27 @@
+{
+  "PolicyId": "trust-score-policy-001",
+  "Name": "TrustScore Threshold Quarantine",
+  "Version": "1.0.0",
+  "Enabled": true,
+  "Scope": {
+    "SubjectType": "RuntimeAuthorized"
+  },
+  "Conditions": [
+    {
+      "Field": "TrustScore",
+      "Operator": "LessThan",
+      "Value": 40
+    }
+  ],
+  "Actions": [
+    {
+      "Outcome": "Quarantine",
+      "Severity": "Warning",
+      "Reason": "TrustScoreBelowThreshold"
+    }
+  ],
+  "Severity": "Warning",
+  "CreatedBy": "EKOS-LOS-TRUST-005",
+  "CreatedUtc": "2026-06-24T00:00:00.0000000Z"
+}
+

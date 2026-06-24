@@ -43,6 +43,8 @@ Contract
 - M2.9 Runtime Trust Monitoring
 - M2.10 Runtime Trust Enforcement
 - M2.11 Runtime Trust Recovery
+- M2.12 Runtime Trust Policy Engine
+
 
 ## Subsystems
 
