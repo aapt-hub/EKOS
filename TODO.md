@@ -21,15 +21,11 @@ This file tracks current repository roadmap status. Implementation state is veri
 - M2.10 Runtime Trust Enforcement
 - M2.11 Runtime Trust Recovery
 - M2.12 Trust Policy Engine
-
-
+- M2.13 Runtime Trust Dashboard
 
 ## Planned
 
-- M2.11 Runtime Trust Recovery
-- M2.13 Runtime Trust Dashboard
 - Phase 3 Runtime Authority Kernel
-
 
 ## Documentation Maintenance
 
