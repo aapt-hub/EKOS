@@ -2,7 +2,7 @@
   "ArtifactType": "contract",
   "ArtifactPath": "C:\\Repos\\EKOS\\los\\contracts\\EKOS.Execute\\1.0.0\\contract.json",
   "HashAlgorithm": "SHA256",
-  "ArtifactHash": "54de971051bd05e0b5de9a024c386c178957bed8027b1daeac05486bcbb7ff6c",
-  "AttestedUtc": "2026-06-23T09:02:05.9951309Z",
+  "ArtifactHash": "37c86f4a0c176748a883d0e916d0a5f3ac1a9d3a4354f32a9d252c0410e35540",
+  "AttestedUtc": "2026-06-24T03:49:16.2457717Z",
   "AttestationVersion": "1.0.0"
 }
