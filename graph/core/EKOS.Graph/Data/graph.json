@@ -1,0 +1,9 @@
+{
+  "Edges": [],
+  "Nodes": {
+    "GitOps": {
+      "name": "GitOps",
+      "type": "concept"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ArtifactType": "contract",
+  "ArtifactPath": "C:\\Repos\\EKOS\\los\\contracts\\EKOS.Execute\\1.0.0\\contract.json",
+  "HashAlgorithm": "SHA256",
+  "ArtifactHash": "54de971051bd05e0b5de9a024c386c178957bed8027b1daeac05486bcbb7ff6c",
+  "AttestedUtc": "2026-06-23T09:02:05.9951309Z",
+  "AttestationVersion": "1.0.0"
+}

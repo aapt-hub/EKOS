@@ -1,0 +1,38 @@
+{
+  "SchemaVersion": "1.0",
+  "RootHash": "a9b013a7a3bd2ce1a8e246042c53ef38365eb76282a5b8ac1da03f6f2d95802f",
+  "SnapshotA": [
+    {
+      "Path": "docs/a.md",
+      "Name": "a.md",
+      "ContentHash": "aaa"
+    },
+    {
+      "Path": "docs/shared.md",
+      "Name": "shared.md",
+      "ContentHash": "same"
+    },
+    {
+      "Path": "docs/old.md",
+      "Name": "old.md",
+      "ContentHash": "old"
+    }
+  ],
+  "SnapshotB": [
+    {
+      "Path": "docs/a.md",
+      "Name": "a.md",
+      "ContentHash": "bbb"
+    },
+    {
+      "Path": "docs/shared.md",
+      "Name": "shared.md",
+      "ContentHash": "same"
+    },
+    {
+      "Path": "docs/new.md",
+      "Name": "new.md",
+      "ContentHash": "new"
+    }
+  ]
+}

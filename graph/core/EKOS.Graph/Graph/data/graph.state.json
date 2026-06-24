@@ -1,0 +1,17 @@
+{
+  "edges": {
+    "from": "GitOps",
+    "to": "Terraform",
+    "relation": "uses"
+  },
+  "nodes": [
+    {
+      "name": "GitOps",
+      "type": "concept"
+    },
+    {
+      "name": "Terraform",
+      "type": "tool"
+    }
+  ]
+}

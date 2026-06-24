@@ -1,0 +1,25 @@
+{
+  "node": {
+    "required": ["id", "type", "label", "createdAt"],
+    "properties": {
+      "id": "string",
+      "type": "string",
+      "label": "string",
+      "metadata": "object",
+      "createdAt": "string",
+      "updatedAt": "string"
+    }
+  },
+  "edge": {
+    "required": ["id", "from", "to", "type", "createdAt"],
+    "properties": {
+      "id": "string",
+      "from": "string",
+      "to": "string",
+      "type": "string",
+      "weight": "number",
+      "metadata": "object",
+      "createdAt": "string"
+    }
+  }
+}

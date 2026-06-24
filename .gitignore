@@ -1,49 +1,84 @@
-﻿# EKOS / PETOS .gitignore
+# =========================================================
+# EKOS CORE: BUILD ARTIFACTS (CRITICAL - DO NOT TRACK)
+# =========================================================
 
-# OS files
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.log
+*.user
+*.suo
+
+# .NET build folders
+*.Builds/
+*.TestResults/
+
+# =========================================================
+# EKOS GRAPH ARTIFACT SAFETY RULES
+# (these are generated system outputs, not source)
+# =========================================================
+
+ekos.graph.snapshot.json
+ekos.identity.graph.json
+ekos.system.graph.json
+ekos.transaction.plan.json
+ekos.transaction.validation.json
+
+# If you want strict versioning later, we can move these to /graph/artifacts/
+
+# =========================================================
+# EKOS AUDIT / DRY-RUN OUTPUT
+# =========================================================
+
+artifacts/
+
+# =========================================================
+# LEGACY LOCAL WIKI EXPORTS
+# =========================================================
+
+github-wiki/
+
+# =========================================================
+# TEMP / TOOLING OUTPUT
+# =========================================================
+
+*.tmp
+*.temp
+*.bak
+
+# PowerShell artifacts
+*.ps1.xml
+*.ps1.lnk
+
+# =========================================================
+# IDE / ENVIRONMENT
+# =========================================================
+
+.vs/
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================================================
+# OPTIONAL LOCAL DEV OVERRIDES
+# =========================================================
+
+appsettings.Development.json
+local.settings.json
+
+# =========================================================
+# OS FILES
+# =========================================================
+
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-logs/
-
-# Cache
-.cache/
-tmp/
-temp/
-
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
-
-# Node
-node_modules/
-dist/
-build/
-
-# AI / MCP noise
-.mcp/
-agents/
-ai-cache/
-rag-cache/
-vector-db/
-embeddings/
-
-# Drafts
-drafts/
-sandbox/
-wip/
-*_draft.md
-
-# Secrets
-.env
-*.key
-*.pem
-
-# Generated
-generated/
-llm-output/
-site/
+# =========================================================
+# EKOS SAFETY NOTE
+# =========================================================
+# Keep graph definitions (*.ps1, *.cs, *.md, *.json schema files)
+# DO NOT ignore source-level EKOS architecture definitions.
+github-wiki/

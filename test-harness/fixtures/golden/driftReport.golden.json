@@ -1,0 +1,87 @@
+{
+  "SchemaVersion": "1.0",
+  "TimestampUtc": "STATIC",
+  "RootHash": "a9b013a7a3bd2ce1a8e246042c53ef38365eb76282a5b8ac1da03f6f2d95802f",
+  "SnapshotA": [
+    {
+      "Path": "docs/a.md",
+      "Name": "a.md",
+      "ContentHash": "aaa"
+    },
+    {
+      "Path": "docs/shared.md",
+      "Name": "shared.md",
+      "ContentHash": "same"
+    },
+    {
+      "Path": "docs/old.md",
+      "Name": "old.md",
+      "ContentHash": "old"
+    }
+  ],
+  "SnapshotB": [
+    {
+      "Path": "docs/a.md",
+      "Name": "a.md",
+      "ContentHash": "bbb"
+    },
+    {
+      "Path": "docs/shared.md",
+      "Name": "shared.md",
+      "ContentHash": "same"
+    },
+    {
+      "Path": "docs/new.md",
+      "Name": "new.md",
+      "ContentHash": "new"
+    }
+  ],
+  "ExpectedDrift": {
+    "TimestampUtc": "STATIC",
+    "Summary": {
+      "Added": 1,
+      "Removed": 1,
+      "Moved": 0,
+      "Stable": 1
+    },
+    "Details": {
+      "Added": [
+        {
+          "Path": "docs/new.md",
+          "Name": "new.md",
+          "ContentHash": "new",
+          "IdentityKey": "a2e40bd011e12dbaebefd903f181dfad05dfe04307e0e68f9e17967a68c8deab"
+        }
+      ],
+      "Removed": [
+        {
+          "Path": "docs/old.md",
+          "Name": "old.md",
+          "ContentHash": "old",
+          "IdentityKey": "972f39a798f99f8d88432fbd7214a8cb57320aca76fe9e11d4d8c089fb6ccc7f"
+        }
+      ],
+      "Stable": [
+        {
+          "Path": "docs/shared.md",
+          "Name": "shared.md",
+          "ContentHash": "same",
+          "IdentityKey": "049624b10f83bd827c59b9bd303eda6e4444a1216a872b58184967ea7f8a71c1"
+        }
+      ],
+      "Changed": [
+        {
+          "Path": "docs/a.md",
+          "Name": "a.md",
+          "ContentHash": "bbb",
+          "IdentityKey": "75435d7f6dd300a774516ceed340fcce987bd756bf02338e6972cb62031a32e5",
+          "OldContentHash": "aaa",
+          "NewContentHash": "bbb"
+        }
+      ],
+      "DriftScore": 1.0,
+      "IsCritical": true
+    },
+    "IsClean": false
+  }
+}

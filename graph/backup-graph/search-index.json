@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-06-19T23:15:19.8216750-04:00",
+  "version": 1,
+  "total_items": 31,
+  "failed_items": 0,
+  "items": [
+    {
+      "id": "PAT-0001-Blue-Green-Deployment",
+      "type": "pattern",
+      "title": "PAT-0001-Blue-Green-Deployment",
+      "summary": "# Blue-Green Deployment\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0001-Blue-Green-Deployment.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.5991319-04:00"
+    },
+    {
+      "id": "PAT-0001-blue-green",
+      "type": "pattern",
+      "title": "PAT-0001-blue-green",
+      "summary": "# Blue-Green Deployment Pattern\nSafe deployment strategy using two environments.\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0001-blue-green.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:14:39.1480424-04:00"
+    },
+    {
+      "id": "PAT-0002-Canary-Deployment",
+      "type": "pattern",
+      "title": "PAT-0002-Canary-Deployment",
+      "summary": "# Canary Deployment\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0002-Canary-Deployment.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6050322-04:00"
+    },
+    {
+      "id": "PAT-0002-canary",
+      "type": "pattern",
+      "title": "PAT-0002-canary",
+      "summary": "# Canary Deployment Pattern\nGradual rollout of changes to reduce risk.\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0002-canary.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:14:39.2129689-04:00"
+    },
+    {
+      "id": "PAT-0003-Rolling-Deployment",
+      "type": "pattern",
+      "title": "PAT-0003-Rolling-Deployment",
+      "summary": "# Rolling Deployment\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0003-Rolling-Deployment.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6102392-04:00"
+    },
+    {
+      "id": "PAT-0003-zero-trust",
+      "type": "pattern",
+      "title": "PAT-0003-zero-trust",
+      "summary": "# Zero Trust Pattern\nNo implicit trust between systems or users.\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0003-zero-trust.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:14:39.2842424-04:00"
+    },
+    {
+      "id": "PAT-0004-gitops",
+      "type": "pattern",
+      "title": "PAT-0004-gitops",
+      "summary": "# GitOps Pattern\nInfrastructure managed via Git as source of truth.\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0004-gitops.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:14:39.3509886-04:00"
+    },
+    {
+      "id": "PAT-0004-Zero-Trust-Architecture",
+      "type": "pattern",
+      "title": "PAT-0004-Zero-Trust-Architecture",
+      "summary": "# Zero Trust Architecture\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0004-Zero-Trust-Architecture.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6143992-04:00"
+    },
+    {
+      "id": "PAT-0005-Least-Privilege-Access",
+      "type": "pattern",
+      "title": "PAT-0005-Least-Privilege-Access",
+      "summary": "# Least Privilege Access\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0005-Least-Privilege-Access.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6228958-04:00"
+    },
+    {
+      "id": "PAT-0005-rag",
+      "type": "pattern",
+      "title": "PAT-0005-rag",
+      "summary": "# RAG Pattern\nRetrieval Augmented Generation for AI knowledge systems.\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0005-rag.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:14:39.4112313-04:00"
+    },
+    {
+      "id": "PAT-0006-Defense-in-Depth",
+      "type": "pattern",
+      "title": "PAT-0006-Defense-in-Depth",
+      "summary": "# Defense in Depth\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0006-Defense-in-Depth.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6228958-04:00"
+    },
+    {
+      "id": "PAT-0007-Hub-and-Spoke-Network",
+      "type": "pattern",
+      "title": "PAT-0007-Hub-and-Spoke-Network",
+      "summary": "# Hub and Spoke Network\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0007-Hub-and-Spoke-Network.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6305527-04:00"
+    },
+    {
+      "id": "PAT-0008-Event-Driven-Architecture",
+      "type": "pattern",
+      "title": "PAT-0008-Event-Driven-Architecture",
+      "summary": "# Event Driven Architecture\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0008-Event-Driven-Architecture.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6350772-04:00"
+    },
+    {
+      "id": "PAT-0009-CQRS",
+      "type": "pattern",
+      "title": "PAT-0009-CQRS",
+      "summary": "# CQRS\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0009-CQRS.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6664223-04:00"
+    },
+    {
+      "id": "PAT-0010-Microservices-Architecture",
+      "type": "pattern",
+      "title": "PAT-0010-Microservices-Architecture",
+      "summary": "# Microservices Architecture\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0010-Microservices-Architecture.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6695469-04:00"
+    },
+    {
+      "id": "PAT-0011-Circuit-Breaker",
+      "type": "pattern",
+      "title": "PAT-0011-Circuit-Breaker",
+      "summary": "# Circuit Breaker\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0011-Circuit-Breaker.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6739868-04:00"
+    },
+    {
+      "id": "PAT-0012-Retry-with-Backoff",
+      "type": "pattern",
+      "title": "PAT-0012-Retry-with-Backoff",
+      "summary": "# Retry with Backoff\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0012-Retry-with-Backoff.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6759846-04:00"
+    },
+    {
+      "id": "PAT-0013-Bulkhead-Pattern",
+      "type": "pattern",
+      "title": "PAT-0013-Bulkhead-Pattern",
+      "summary": "# Bulkhead Pattern\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0013-Bulkhead-Pattern.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6802022-04:00"
+    },
+    {
+      "id": "PAT-0014-RAG-Architecture",
+      "type": "pattern",
+      "title": "PAT-0014-RAG-Architecture",
+      "summary": "# RAG Architecture\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0014-RAG-Architecture.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6841308-04:00"
+    },
+    {
+      "id": "PAT-0015-Agent-Supervisor-Pattern",
+      "type": "pattern",
+      "title": "PAT-0015-Agent-Supervisor-Pattern",
+      "summary": "# Agent Supervisor Pattern\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0015-Agent-Supervisor-Pattern.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6887380-04:00"
+    },
+    {
+      "id": "PAT-0016-Landing-Zone",
+      "type": "pattern",
+      "title": "PAT-0016-Landing-Zone",
+      "summary": "# Landing Zone\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0016-Landing-Zone.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6937267-04:00"
+    },
+    {
+      "id": "PAT-0017-Multi-Region-Architecture",
+      "type": "pattern",
+      "title": "PAT-0017-Multi-Region-Architecture",
+      "summary": "# Multi-Region Architecture\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0017-Multi-Region-Architecture.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.6980300-04:00"
+    },
+    {
+      "id": "PAT-0018-GitOps",
+      "type": "pattern",
+      "title": "PAT-0018-GitOps",
+      "summary": "# GitOps\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0018-GitOps.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.7039502-04:00"
+    },
+    {
+      "id": "PAT-0019-Infrastructure-as-Code",
+      "type": "pattern",
+      "title": "PAT-0019-Infrastructure-as-Code",
+      "summary": "# Infrastructure as Code\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0019-Infrastructure-as-Code.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.7071782-04:00"
+    },
+    {
+      "id": "PAT-0020-Observability-Stack",
+      "type": "pattern",
+      "title": "PAT-0020-Observability-Stack",
+      "summary": "# Observability Stack\n\n\r\n",
+      "tags": null,
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-0020-Observability-Stack.md",
+      "score": 0,
+      "last_modified": "2026-06-19T18:48:47.7127001-04:00"
+    },
+    {
+      "id": "PAT-20260619-213007",
+      "type": "pattern",
+      "title": "PAT-20260619-213007",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-20260619-213007.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:30:07.6719276-04:00"
+    },
+    {
+      "id": "PAT-9999-test",
+      "type": "pattern",
+      "title": "PAT-9999-test",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\patterns\\PAT-9999-test.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:56:02.2573037-04:00"
+    },
+    {
+      "id": "ADR-20260619-213007",
+      "type": "adr",
+      "title": "ADR-20260619-213007",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\adrs\\ADR-20260619-213007.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:30:07.8033981-04:00"
+    },
+    {
+      "id": "ADR-20260619-215635",
+      "type": "adr",
+      "title": "ADR-20260619-215635",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\adrs\\ADR-20260619-215635.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:56:35.7813922-04:00"
+    },
+    {
+      "id": "RB-20260619-213034",
+      "type": "runbook",
+      "title": "RB-20260619-213034",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\runbooks\\RB-20260619-213034.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:30:34.2104777-04:00"
+    },
+    {
+      "id": "RB-20260619-215649",
+      "type": "runbook",
+      "title": "RB-20260619-215649",
+      "summary": "",
+      "tags": [],
+      "source_path": "C:\\Repos\\EKOS\\runbooks\\RB-20260619-215649.md",
+      "score": 0,
+      "last_modified": "2026-06-19T21:56:49.1095988-04:00"
+    }
+  ],
+  "failures": []
+}
