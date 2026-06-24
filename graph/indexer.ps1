@@ -1,4 +1,21 @@
-﻿$ErrorActionPreference = "Stop"
+<#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
+$ErrorActionPreference = "Stop"
 
 $NodesPath = ".\nodes.json"
 $EdgesPath = ".\edges.json"

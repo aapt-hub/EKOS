@@ -1,3 +1,13 @@
+---
+title: Governance Subsystem
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # Governance Subsystem
 
 ## Purpose
@@ -30,5 +40,5 @@ Governance feeds trust recovery, trust policy, trust dashboard, and Phase 3 Runt
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

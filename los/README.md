@@ -1,3 +1,13 @@
+---
+title: LOS
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # LOS
 
 LOS is the Operating System Truth Kernel for EKOS.
@@ -79,5 +89,5 @@ LOS does not own PETOS application behavior or host OS implementation. It provid
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

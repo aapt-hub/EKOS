@@ -4,7 +4,7 @@
     GUID              = '16bbf914-57ad-47ed-b7ed-f7cf93192c29'
     Author            = 'Abner Pauneto'
     CompanyName       = 'EKOS'
-    Copyright         = '(c) Abner Pauneto'
+    Copyright         = '(c) 2026 Abner Pauneto. All Rights Reserved.'
     Description       = 'Deterministic EKOS graph drift audit module.'
     PowerShellVersion = '5.1'
     FunctionsToExport = @('Invoke-EkosGraphAudit')

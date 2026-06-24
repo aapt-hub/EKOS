@@ -1,3 +1,13 @@
+---
+title: EKOS Roadmap TODO
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # EKOS Roadmap TODO
 
 This file tracks current repository roadmap status. Implementation state is verified by source files and tests.
@@ -25,5 +35,5 @@ This file tracks current repository roadmap status. Implementation state is veri
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

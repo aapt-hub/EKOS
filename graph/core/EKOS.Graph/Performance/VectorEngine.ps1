@@ -1,3 +1,20 @@
+<#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
 # EKOS.Graph v3.3 Vector Engine
 # Parallel traversal + BFS/DFS acceleration layer
 

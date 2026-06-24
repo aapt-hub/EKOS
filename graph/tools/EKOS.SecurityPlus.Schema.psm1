@@ -1,3 +1,20 @@
+<#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
 # EKOS.SecurityPlus.Schema.psm1
 # Deterministic schema layer for SY0-701 ingestion
 

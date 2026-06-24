@@ -1,3 +1,13 @@
+---
+title: EKOS Architecture
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # EKOS Architecture
 
 Author: Abner Pauneto
@@ -90,5 +100,5 @@ Planned: M2.11 through M2.13 and Phase 3 Runtime Authority Kernel.
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved

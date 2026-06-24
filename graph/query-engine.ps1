@@ -1,4 +1,21 @@
 <#
+AUTHOR:
+Abner Pauneto
+
+COPYRIGHT:
+Copyright (c) 2026 Abner Pauneto
+
+LICENSE:
+Proprietary – All Rights Reserved
+
+PROJECT:
+EKOS
+
+STATUS:
+Private Development
+#>
+
+<#
 FILE: C:\repos\ekos\graph\query-engine.ps1
 
 EKOS Sprint 1 - Query Engine (READ ONLY)

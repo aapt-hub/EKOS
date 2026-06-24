@@ -1,3 +1,13 @@
+---
+title: Certification Subsystem
+author: Abner Pauneto
+project: EKOS
+repository_status: Private Development
+license: Proprietary
+copyright: Copyright (c) 2026 Abner Pauneto
+last_updated: 2026-06-24
+---
+
 # Certification Subsystem
 
 ## Purpose
@@ -29,5 +39,5 @@ Certification feeds trust authority, trust recovery, trust policy, and dashboard
 
 Author: Abner Pauneto  
 Project: EKOS  
-Repository: https://github.com/aapt-hub/EKOS  
-License: MIT
+Repository: EKOS  
+License: Proprietary - All Rights Reserved
