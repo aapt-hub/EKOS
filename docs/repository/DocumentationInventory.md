@@ -1,3 +1,4 @@
+
 ---
 title: Documentation Inventory
 author: Abner Pauneto
@@ -18,10 +19,11 @@ Repository-wide documentation synchronization inventory for the EKOS / LOS docum
 
 | File path | Purpose | Phase referenced | Outdated references found | Synchronization action |
 | --- | --- | --- | --- | --- |
-| `README.md` | Repository overview | M2.6-M2.10 | Mixed EKOS.Graph and stale roadmap text | Replaced with current EKOS / LOS / PETOS overview |
+| `README.md` | Repository overview | M2.6-M2.12 | Mixed EKOS.Graph and stale roadmap text | Replaced with current EKOS / LOS / PETOS overview |
 | `architecture.md` | System architecture | M2.6-M2.10 | Placeholder architecture text | Replaced with current runtime authority model |
 | `TODO.md` | Roadmap notes | M2.6-M2.13 | Old M2.7 scaffold wording | Replaced with implemented/planned status |
-| `los/README.md` | LOS subsystem overview | M2.6-M2.10 | M2.6 and certification listed as future | Updated through M2.10 |
+| `los/README.md` | LOS subsystem overview | M2.6-M2.12 | M2.6 and certification listed as future | Updated through M2.10 |
+
 | `ekos/README.md` | EKOS subsystem overview | Current | Needed LOS/EKOS/PETOS boundary clarification | Updated |
 | `wiki/README.md` | Wiki index | M2.6-M2.13 | Old limited wiki coverage | Rebuilt navigation |
 | `wiki/Home.md` | Wiki home | M2.6-M2.10 | Old M2.7 wording | Updated |
@@ -67,8 +69,9 @@ Standardized headers were added to the current LOS trust modules. Detailed funct
 
 After synchronization, the primary documentation set now separates:
 
-- Implemented: M2.6 through M2.11
-- Planned: M2.12 through M2.13 and Phase 3 Runtime Authority Kernel
+- Implemented: M2.6 through M2.12
+- Planned: M2.13 and Phase 3 Runtime Authority Kernel
+
 - Layer roles: LOS, EKOS, PETOS, host runtimes
 
 Local markdown links in the synchronized docs/wiki set were validated with no broken local references.
