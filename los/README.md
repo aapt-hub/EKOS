@@ -1,60 +1,83 @@
 # LOS
 
-## 1) Purpose
-LOS (Certified Truth Kernel) is the repository’s source of truth for certified contracts, schemas, identity, certification, attestation, ledger, and provenance.
+LOS is the Operating System Truth Kernel for EKOS.
 
-## 2) Ownership boundary
-- Owns LOS-layer data contracts and validation primitives.
-- Owns certified artifacts and their invariants.
-- Does **not** own runtime execution logic, graph execution, or external orchestration.
+## Purpose
 
-## 3) What belongs here
-- contracts: contract definitions and interfaces
-- schemas: schema definitions and schema validation rules
-- identity: identity models and identity verification contracts
-- certification: certification procedures/invariants
-- attestation: attestation models and attestations invariants
-- ledger: ledger models and ledger invariants
-- provenance: provenance models and lineage invariants
+LOS owns truth contracts, schemas, attestations, governance enforcement, runtime certification, runtime trust authority, continuous trust monitoring, and runtime trust enforcement.
 
-## 4) What does NOT belong here
-- EKOS runtime/graph/inference/ingestion code
-- GitHub automation or operational audit orchestration
-- training pipelines, model evaluation, or compute infrastructure
+## Current Runtime Chain
 
-## 5) Implemented (Phase 2.5) — Governance Foundation
+```text
+Contract
+-> Schema
+-> Attestation
+-> Policy
+-> Execution Broker
+-> Runtime Execution
+-> Certification
+-> Trust Authority
+-> Trust Monitoring
+-> Trust Enforcement
+```
 
-### Contracts
-- `los/contracts/EKOS.Execute/1.0.0/contract.json`
+## Implemented Milestones
 
-### Schemas
-- `los/schemas/execution-result/1.0.0/schema.json`
+- M2.6 Governance Enforcement
+- M2.7 Runtime Certification
+- M2.8 Runtime Trust Authority
+- M2.9 Runtime Trust Monitoring
+- M2.10 Runtime Trust Enforcement
 
-### Artifact Loader + Hashing
-- `los/registries/LOS.ArtifactLoader.psm1`
+## Subsystems
 
-### Attestation System
-- Attestations are stored under `los/attestations/...`
-- Example:
-  - `los/attestations/contract/EKOS.Execute/1.0.0/attestation.json`
+### Governance Enforcement
 
-### Governance Reporting
-- `los/reports/Phase-2.5-Governance-Report.md`
+Located under `los/modules/`.
 
-### Implemented LOS Registry Modules
-- `los/registries/LOS.ContractRegistry.psm1`
-- `los/registries/LOS.SchemaRegistry.psm1`
-- `los/registries/LOS.ArtifactLoader.psm1`
-- `los/registries/LOS.AttestationRegistry.psm1`
+- `LOS.ContractEnforcer.psm1`
+- `LOS.PolicyEngine.psm1`
+- `LOS.ExecutionBroker.psm1`
+- `LOS.ProvenanceEngine.psm1`
+- `LOS.ComplianceReport.psm1`
 
-## 6) Not Yet Implemented
+### Runtime Certification
 
-- `los/registries/LOS.GovernanceValidator.psm1`
-- Runtime enforcement gate
-- Contract-required execution
-- Execution certification pipeline
-- Phase 2.6 Governance Enforcement
-- Phase 3 Runtime Certification
+Located under `los/certification/`.
 
-Phase 3 Runtime Certification is blocked until Phase 2.6 Governance Enforcement is complete.
+- `CertificationEvidence.psm1`
+- `CertificationHarness.psm1`
+- `CertificationLedger.psm1`
+- `CertificationReport.psm1`
+- `CertificationParity.psm1`
+- `CertificationFailureTaxonomy.psm1`
 
+### Runtime Trust
+
+Located under `los/trust/`.
+
+- `LOS.RuntimeTrustAuthority.psm1`
+- `LOS.TrustEvidence.psm1`
+- `LOS.TrustDecision.psm1`
+- `LOS.TrustLedger.psm1`
+- `LOS.TrustReport.psm1`
+- `LOS.TrustScoring.psm1`
+- `LOS.TrustAlerts.psm1`
+- `LOS.RuntimeTrustMonitor.psm1`
+- `LOS.RuntimeTrustEnforcement.psm1`
+
+## Tests
+
+```powershell
+Import-Module Pester -MinimumVersion 5.0 -Force
+Invoke-Pester .\los\tests\ -Output Minimal
+```
+
+## Ownership Boundary
+
+LOS does not own PETOS application behavior or host OS implementation. It provides the truth and authority layer consumed by EKOS and PETOS.
+
+Author: Abner Pauneto  
+Project: EKOS  
+Repository: https://github.com/aapt-hub/EKOS  
+License: MIT

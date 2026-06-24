@@ -1,16 +1,13 @@
-# Architecture — Planned M2.7 Layer Model
+# Architecture M2.7 Compatibility Page
 
-M2.7 is not implemented as a milestone in the repository. This page records planned layer documentation only.
+M2.7 is now implemented as Runtime Certification. The maintained certification page is:
 
-PETOS
-↓
-EKOS
-↓
-LOS
-↓
-Training Fabric
-↓
-Compute Fabric
-↓
-HAL
+- [Runtime Certification](20-Governance/Runtime-Certification.md)
 
+The current implemented LOS authority chain extends beyond M2.7 through M2.10:
+
+```text
+Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execution -> Certification -> Trust Authority -> Trust Monitoring -> Trust Enforcement
+```
+
+Author: Abner Pauneto

@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Trust Decision.
+
+.DESCRIPTION
+Evaluates trust evidence and fail-closed runtime trust decision conditions.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.8
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function New-LOSTrustDenyDecision {

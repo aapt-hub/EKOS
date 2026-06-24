@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Runtime Trust Scoring.
+
+.DESCRIPTION
+Calculates and updates runtime trust scores for LOS M2.9 monitoring using governance, certification, runtime health, and historical trust evidence.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.9
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function Get-LOSTrustPropertyValue {

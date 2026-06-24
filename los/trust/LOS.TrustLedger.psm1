@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Trust Ledger.
+
+.DESCRIPTION
+Writes, reads, locates, and validates append-only runtime trust ledger records and compatibility wrapper APIs.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.8
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function Write-LOSTrustLedger {

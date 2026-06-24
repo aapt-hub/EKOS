@@ -1,19 +1,11 @@
 # Architecture
 
-## Planned M2.7 Layer Model
+The maintained architecture pages now live under `wiki/10-Architecture/`.
 
-M2.7 is not implemented as a milestone in the repository. This page records planned layer documentation only.
+- [LOS Architecture](10-Architecture/LOS-Architecture.md)
+- [LOS Architecture v2](10-Architecture/LOS-Architecture-v2.md)
+- [Runtime Authority Model](10-Architecture/Runtime-Authority-Model.md)
 
-PETOS
-↓
-EKOS
-↓
-LOS
-↓
-Training Fabric
-↓
-Compute Fabric
-↓
-HAL
+Current implemented state: M2.6 through M2.10.
 
-
+Author: Abner Pauneto

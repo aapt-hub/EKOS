@@ -1,21 +1,29 @@
-# TODO — Planned M2.7 documentation scaffold + audit GitHub issue automation
+# EKOS Roadmap TODO
 
-M2.7 is not implemented as a milestone. Checked items below only indicate completed documentation or audit automation scaffold tasks.
+This file tracks current repository roadmap status. Implementation state is verified by source files and tests.
 
-- [ ] Create new architecture scaffold folders (LOS/EKOS/Training Fabric/Compute Fabric/HAL/PETOS)
-- [ ] Add README.md files to los/, ekos/, training-fabric/, compute-fabric/, hal/, petos/ and wiki/
-- [x] Create ekos/audit/EKOS.GitHubIssueReporter.psm1
+## Implemented
 
-- [x] Create ekos/audit/EKOS.AuditOrchestrator.psm1
+- M2.6 Governance Enforcement
+- M2.7 Runtime Certification
+- M2.8 Runtime Trust Authority
+- M2.9 Runtime Trust Monitoring
+- M2.10 Runtime Trust Enforcement
 
-- [x] Create ekos/audit/Test-EKOS.AuditIssueReporter.ps1
+## Planned
 
-- [x] Create wiki/Architecture-M2.7.md
+- M2.11 Runtime Trust Recovery
+- M2.12 Trust Policy Engine
+- M2.13 Runtime Trust Dashboard
+- Phase 3 Runtime Authority Kernel
 
-- [x] Create wiki/Audit-Issue-Automation.md
+## Documentation Maintenance
 
-- [x] Create wiki/Roadmap-M2.7.md
+- Keep `README.md`, `architecture.md`, `los/README.md`, `wiki/`, and `docs/repository/` synchronized with source implementation.
+- Do not mark future milestones complete until source modules and tests exist.
+- Preserve deterministic behavior and trust decision semantics during documentation updates.
 
-- [x] Run validation commands (pwsh test script; git status --short)
-
-
+Author: Abner Pauneto  
+Project: EKOS  
+Repository: https://github.com/aapt-hub/EKOS  
+License: MIT

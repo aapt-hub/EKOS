@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Trust Evidence.
+
+.DESCRIPTION
+Builds deterministic trust evidence records and hashes for runtime trust authority workflows.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.8
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function Get-LOSTrustRepoRoot {

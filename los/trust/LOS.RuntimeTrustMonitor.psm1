@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Runtime Trust Monitor.
+
+.DESCRIPTION
+Runs continuous or one-pass runtime trust monitoring, recalculates trust scores, emits alerts, writes runtime events, and updates trust health summaries.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.9
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 $script:LOSTrustMonitorStopRequested = $false

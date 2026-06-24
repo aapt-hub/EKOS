@@ -1,12 +1,14 @@
 # EKOS Wiki Home
 
-This wiki contains documentation for the EKOS/PETOS layered architecture.
+EKOS is documented as a layered runtime authority system:
 
-- **LOS Architecture**: `LOS-DCEK-Architecture-Map.md`
-- **LOS Governance (Phase 2.5)**: `LOS-Governance.md`
-- **LOS Authority Boundary and Enforcement Gates**: `LOS-Authority-Boundary.md`
-- **Planned EKOS Architecture (M2.7 model; not implemented milestone)**: `Architecture-M2.7.md`
-- **Audit Issue Automation**: `Audit-Issue-Automation.md`
-- **Roadmap**: `Roadmap.md`
+```text
+PETOS Application Layer
+EKOS Runtime Execution Engine
+LOS Operating System Truth Kernel
+Linux / Windows Host Runtime Layer
+```
 
+Start with [Overview](01-Overview.md) and [Runtime Authority Model](10-Architecture/Runtime-Authority-Model.md).
 
+Author: Abner Pauneto

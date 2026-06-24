@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Trust Report.
+
+.DESCRIPTION
+Emits structured JSON trust reports from trust decisions and trust evidence.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.8
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function New-LOSTrustReport {

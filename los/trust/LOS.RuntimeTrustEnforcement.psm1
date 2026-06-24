@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Runtime Trust Enforcement.
+
+.DESCRIPTION
+Provides runtime trust enforcement for LOS M2.10. The module persists non-destructive enforcement state for runtime trust subjects and supports quarantine, deny, and revoke actions after trust monitoring or trust authority determines that a subject should no longer be treated as fully trusted.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.10
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function Get-LOSTrustEnforcementStatePath {
@@ -155,6 +168,28 @@ function Add-LOSTrustEnforcementRecord {
     return $record
 }
 
+<#
+.SYNOPSIS
+Quarantines a runtime trust subject.
+
+.DESCRIPTION
+Appends a quarantine enforcement record for a runtime subject. Quarantine preserves evidence and audit history while marking the subject for restricted treatment.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.PARAMETER SubjectId
+Unique runtime trust subject identifier.
+
+.PARAMETER Reason
+Human-readable reason for quarantine.
+
+.OUTPUTS
+Trust enforcement record.
+
+.EXAMPLE
+Quarantine-LOSTrustSubject -RootPath . -SubjectId "Runtime-001" -Reason "CriticalAlert"
+#>
 function Quarantine-LOSTrustSubject {
     [CmdletBinding()]
     param(
@@ -180,6 +215,28 @@ function Quarantine-LOSTrustSubject {
     Add-LOSTrustEnforcementRecord -RootPath $RootPath -SubjectId $SubjectId -Action "Quarantine" -Reason $Reason -Severity $Severity -Source $Source -EvidenceHash $EvidenceHash -TimestampUtc $TimestampUtc
 }
 
+<#
+.SYNOPSIS
+Denies a runtime trust subject.
+
+.DESCRIPTION
+Appends a deny enforcement record for a runtime subject. Denied subjects are fail-closed and should be treated as blocked by runtime trust enforcement.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.PARAMETER SubjectId
+Unique runtime trust subject identifier.
+
+.PARAMETER Reason
+Human-readable reason for denial.
+
+.OUTPUTS
+Trust enforcement record.
+
+.EXAMPLE
+Deny-LOSTrustSubject -RootPath . -SubjectId "Runtime-001" -Reason "TrustStatusDenied"
+#>
 function Deny-LOSTrustSubject {
     [CmdletBinding()]
     param(
@@ -205,6 +262,28 @@ function Deny-LOSTrustSubject {
     Add-LOSTrustEnforcementRecord -RootPath $RootPath -SubjectId $SubjectId -Action "Deny" -Reason $Reason -Severity $Severity -Source $Source -EvidenceHash $EvidenceHash -TimestampUtc $TimestampUtc
 }
 
+<#
+.SYNOPSIS
+Revokes trust for a runtime subject.
+
+.DESCRIPTION
+Appends a revoke enforcement record while preserving prior trust ledger, alert, and enforcement history.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.PARAMETER SubjectId
+Unique runtime trust subject identifier.
+
+.PARAMETER Reason
+Human-readable reason for revocation.
+
+.OUTPUTS
+Trust enforcement record.
+
+.EXAMPLE
+Revoke-LOSTrustSubject -RootPath . -SubjectId "Runtime-001" -Reason "TrustStatusRevoked"
+#>
 function Revoke-LOSTrustSubject {
     [CmdletBinding()]
     param(
@@ -230,6 +309,25 @@ function Revoke-LOSTrustSubject {
     Add-LOSTrustEnforcementRecord -RootPath $RootPath -SubjectId $SubjectId -Action "Revoke" -Reason $Reason -Severity $Severity -Source $Source -EvidenceHash $EvidenceHash -TimestampUtc $TimestampUtc
 }
 
+<#
+.SYNOPSIS
+Reads runtime trust enforcement state.
+
+.DESCRIPTION
+Returns persisted enforcement records, optionally filtered by subject identifier. Records are sorted deterministically by subject and timestamp.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.PARAMETER SubjectId
+Optional subject identifier filter.
+
+.OUTPUTS
+PSCustomObject containing enforcement records.
+
+.EXAMPLE
+Get-LOSTrustEnforcementState -RootPath . -SubjectId "Runtime-001"
+#>
 function Get-LOSTrustEnforcementState {
     [CmdletBinding()]
     param(
@@ -249,6 +347,22 @@ function Get-LOSTrustEnforcementState {
     }
 }
 
+<#
+.SYNOPSIS
+Clears runtime trust enforcement state.
+
+.DESCRIPTION
+Replaces the persisted enforcement state file with an empty records set. This is intended for controlled test and reset scenarios and does not alter trust ledgers or alert history.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.OUTPUTS
+Clear-state result object.
+
+.EXAMPLE
+Clear-LOSTrustEnforcementState -RootPath .
+#>
 function Clear-LOSTrustEnforcementState {
     [CmdletBinding()]
     param(
@@ -264,6 +378,37 @@ function Clear-LOSTrustEnforcementState {
     }
 }
 
+<#
+.SYNOPSIS
+Evaluates runtime trust enforcement policy.
+
+.DESCRIPTION
+Applies the default M2.10 enforcement policy to a runtime trust subject. Revoked status revokes, denied status denies, critical alerts quarantine, trust scores below 40 quarantine, and all other subjects are allowed.
+
+.PARAMETER RootPath
+Repository or runtime root containing the LOS trust state directory.
+
+.PARAMETER SubjectId
+Unique runtime trust subject identifier.
+
+.PARAMETER TrustScore
+Optional trust score from monitoring.
+
+.PARAMETER TrustStatus
+Optional trust status from trust authority or monitoring.
+
+.PARAMETER AlertSeverity
+Optional alert severity.
+
+.PARAMETER EvidenceHash
+Optional evidence hash used in deterministic enforcement identifiers.
+
+.OUTPUTS
+Trust enforcement decision object.
+
+.EXAMPLE
+Invoke-LOSTrustEnforcement -RootPath . -SubjectId "Runtime-001" -TrustScore 95 -TrustStatus "Trusted"
+#>
 function Invoke-LOSTrustEnforcement {
     [CmdletBinding()]
     param(

@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+LOS Runtime Trust Alerts.
+
+.DESCRIPTION
+Creates, reads, and resolves append-only runtime trust alerts for LOS M2.9 monitoring.
+
+Author: Abner Pauneto
+Project: EKOS
+Subsystem: LOS
+Phase: M2.9
+Status: Complete
+#>
 Set-StrictMode -Version Latest
 
 function Get-LOSTrustAlertsPath {

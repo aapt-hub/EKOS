@@ -1,330 +1,75 @@
 # EKOS
-EKOS (Enterprise Engineering Knowledge Operating System)
-=======
-﻿# EKOS / PETOS
-
-Enterprise Engineering Knowledge Operating System
-
-- PETOS = Personal Engineering System
-- EKOS = Enterprise Engineering System
-
-This repository contains structured engineering knowledge:
-stacks, patterns, architectures, ADRs, runbooks, and more.
 
+EKOS is the Runtime Execution Engine in the EKOS repository. It works with LOS, PETOS, and host runtimes to provide deterministic execution, governance, certification, and runtime trust controls.
 
-# EKOS.Graph v3
-
-EKOS.Graph v3 is a modular, deterministic graph query and execution engine built in PowerShell. It provides AI-style query interpretation, optimization, planning, and transactional execution over graph structures.
+## System Layers
 
----
-
-## 🚀 Overview
+- LOS = Operating System Truth Kernel
+- EKOS = Runtime Execution Engine
+- PETOS = Application Layer
+- Linux / Windows = Host Runtime Layer
 
-EKOS.Graph v3 supports:
-
-- Natural language or structured graph queries
-- Deterministic execution pipeline
-- Query optimization and cost shaping
-- Execution planning layer
-- Transaction-safe graph operations (WAL-ready design)
-- CLI and REST interfaces
+## Current Runtime Chain
 
----
+```text
+Contract
+-> Schema
+-> Attestation
+-> Policy
+-> Execution Broker
+-> Runtime Execution
+-> Certification
+-> Trust Authority
+-> Trust Monitoring
+-> Trust Enforcement
+```
 
-## 🧠 Core Pipeline
+## Implementation Status
 
-All queries flow through a strict deterministic pipeline:
+Implemented:
 
-Query
-↓
-Parser
-↓
-Normalizer
-↓
-Optimizer
-↓
-Planner
-↓
-Executor
-↓
-Transaction Engine
-↓
-Post Validator
-
-Each layer is isolated and must not mutate other layers.
-
----
-
-## 📦 Architecture
-
-EKOS.Graph
-│
-├── Bootstrap
-│   └── ModuleLoader.ps1
-│
-├── Engine
-│   ├── GraphCore.ps1
-│   ├── QueryEngine.ps1
-│   ├── QueryParser.ps1
-│   ├── QueryNormalizer.ps1
-│   ├── Optimizer/
-│   │   └── QueryOptimizer.psm1
-│   ├── Planner/
-│   │   └── QueryPlanner.psm1
-│   ├── Executor.ps1
-│   └── TransactionEngine.ps1
-│
-├── Storage
-│   ├── WAL/
-│   └── Snapshots/
-│
-└── Tests
+- M2.6 Governance Enforcement
+- M2.7 Runtime Certification
+- M2.8 Runtime Trust Authority
+- M2.9 Runtime Trust Monitoring
+- M2.10 Runtime Trust Enforcement
 
----
+Planned:
 
-## ⚙️ Core Entry Point
+- M2.11 Runtime Trust Recovery
+- M2.12 Trust Policy Engine
+- M2.13 Runtime Trust Dashboard
+- Phase 3 Runtime Authority Kernel
 
-Invoke-EKOSQuery @{
-    text = "find deep path from A to E"
-    type = "Search"
-}
-
----
-
-## 🧪 Debug Mode
-
-Invoke-EKOSQuery @{
-    text = "find node A"
-    type = "Search"
-    debug = $true
-}
+## Repository Map
 
-Debug mode exposes:
-- Parsed query
-- Normalized query
-- Optimized query
-- Execution plan
-- Final result
+- `los/`: Operating System Truth Kernel modules, contracts, schemas, certification, trust, tests, and reports.
+- `ekos/`: EKOS-owned runtime and audit orchestration modules.
+- `petos/`: Application-layer scaffolding and application-facing framework boundary.
+- `graph/`: Deterministic graph runtime and canonical serialization tools.
+- `wiki/`: Maintained architecture, governance, trust, runtime, and roadmap documentation.
+- `docs/repository/`: Repository intelligence documents for module inventory, dependency mapping, and subsystem status.
 
----
+## Validation
 
-## 🧠 Query Types
+LOS tests are the primary validation surface for M2.6 through M2.10:
 
-Search
-- Finds nodes matching conditions
-- type = "Search"
+```powershell
+Import-Module Pester -MinimumVersion 5.0 -Force
+Invoke-Pester .\los\tests\ -Output Minimal
+```
 
-Traverse
-- Navigates paths between nodes
-- type = "Traverse"
-
-Query
-- Direct node inspection
-- type = "Query"
-
----
+## Author
 
-## 🧩 QueryOptimizer
+Abner Pauneto
 
-The optimizer transforms queries before planning.
+Creator and Lead Architect of:
 
-Responsibilities:
-- Query rewriting (aliases, normalization)
-- Filter cleanup
-- Edge pruning (duplicates, self-loops)
-- Cost model assignment
-- Traversal strategy selection
+- LOS Runtime Authority Architecture
+- EKOS Runtime Engine
+- PETOS Application Framework
 
-Example output:
-
-@{
-    text = "search deep path"
-    type = "Search"
-    filters = @("status=active")
-    edges = @(
-        @{ from = "A"; to = "B" }
-    )
-    _cost_model = @{
-        traversal = "dfs"
-        depth_limit = 20
-        fanout_limit = 100
-    }
-}
-
----
-
-## 🧭 QueryPlanner
-
-The planner converts optimized queries into execution plans.
-
-Responsibilities:
-- Define execution steps
-- Interpret cost model
-- Select traversal strategy
-
-Example plan:
-
-@{
-    operation = "Search"
-    traversal = "dfs"
-    execution_steps = @(
-        "load_root",
-        "traverse",
-        "apply_filters",
-        "return_results"
-    )
-}
-
----
-
-## 💻 CLI Usage
-
-Invoke-EKOSQuery -Text "find node A"
-
-Invoke-EKOSQuery @{
-    text = "find active nodes"
-    type = "Search"
-}
-
-Invoke-EKOSQuery @{
-    text = "test graph"
-    debug = $true
-}
-
----
-
-## 🌐 REST API (v3)
-
-POST /api/v3/query
-
-Request:
-
-{
-  "text": "find deep path A to E",
-  "type": "Search",
-  "filters": ["status=active"],
-  "debug": false
-}
-
-Response:
-
-{
-  "result": {
-    "nodes": [],
-    "edges": [],
-    "path": []
-  },
-  "metadata": {
-    "execution_time_ms": 12,
-    "traversal": "dfs"
-  }
-}
-
-GET /api/v3/health
-
-Response:
-
-{
-  "status": "healthy",
-  "engine": "EKOS.Graph v3.0.0"
-}
-
----
-
-## 🔁 Execution Modes
-
-Development Mode:
-- Full debug output
-- Pipeline visibility
-- Optimizer trace enabled
-
-Production Mode:
-- Minimal logging
-- Optimized execution
-- Transaction-safe commits only
-
----
-
-## 🧪 Testing
-
-Test optimizer only:
-
-Invoke-QueryOptimizer -Normalized @{
-    text = "find deep path"
-    type = "Search"
-}
-
-Test full pipeline:
-
-Invoke-EKOSQuery @{
-    text = "test node A"
-    type = "Search"
-} -debug
-
----
-
-## 🧱 Design Principles
-
-- Deterministic execution
-- Strict module separation
-- No cross-layer mutation
-- Query transformation before execution
-- Transaction-safe graph updates (WAL design)
-
----
-
-## 🛣️ Roadmap
-
-## Phase Status (Documentation)
-
-Repository implementation is the source of truth. Documentation must not describe planned milestones as implemented unless matching source artifacts exist.
-
-- Phase 2.5 Governance Foundation: COMPLETE
-- Documentation Refresh: IN PROGRESS
-- Phase 2.6 Governance Enforcement: NOT STARTED
-- Phase 3 Runtime Certification: BLOCKED
-
----
-
-## Next EKOS.Graph v3 Build Items (Existing docs)
-
-v3.1:
-- Adaptive cost tuning
-- Query caching layer
-- Hot-path detection
-
-v3.2:
-- Parallel traversal engine
-- Lock manager
-- Concurrency control
-
-v3.3:
-- WAL replay system
-- Snapshot restore engine
-- Crash recovery validation
-
-v4:
-- Distributed graph shards
-- Multi-node execution engine
-
----
-
-## 📌 Summary
-
-EKOS.Graph v3 provides:
-
-- AI-style query interpretation
-- Optimized traversal planning
-- Modular PowerShell architecture
-- CLI + REST interfaces
-- Transaction-safe execution model
-
----
-
-## 🧠 Core Rule
-
-All queries must pass through:
-
-Parser → Normalizer → Optimizer → Planner → Executor
-
-No direct execution outside the Executor layer is allowed.
+Author: Abner Pauneto  
+Project: EKOS  
+Repository: https://github.com/aapt-hub/EKOS  
+License: MIT
