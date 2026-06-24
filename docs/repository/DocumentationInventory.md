@@ -68,7 +68,7 @@ Standardized headers were added to the current LOS trust modules. Detailed funct
 After synchronization, the primary documentation set now separates:
 
 - Implemented: M2.6 through M2.10
-- Planned: M2.11 through M2.13 and Phase 3 Runtime Authority Kernel
+- Planned: M2.12 through M2.13 and Phase 3 Runtime Authority Kernel
 - Layer roles: LOS, EKOS, PETOS, host runtimes
 
 Local markdown links in the synchronized docs/wiki set were validated with no broken local references.
