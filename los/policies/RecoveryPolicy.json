@@ -1,0 +1,36 @@
+{
+  "PolicyId": "recovery-policy-001",
+  "Name": "Runtime Recovery Attempts Gate",
+  "Version": "1.0.0",
+  "Enabled": true,
+  "Scope": {
+    "SubjectType": "RuntimeAuthorized"
+  },
+  "Conditions": [
+    {
+      "All": [
+        {
+          "Field": "RecoveryAttempts",
+          "Operator": "LessThanOrEqual",
+          "Value": 2
+        },
+        {
+          "Field": "RuntimeAuthorized",
+          "Operator": "Equals",
+          "Value": false
+        }
+      ]
+    }
+  ],
+  "Actions": [
+    {
+      "Outcome": "Recover",
+      "Severity": "Critical",
+      "Reason": "RecoveryAllowed"
+    }
+  ],
+  "Severity": "Critical",
+  "CreatedBy": "EKOS-LOS-TRUST-005",
+  "CreatedUtc": "2026-06-24T00:00:00.0000000Z"
+}
+
