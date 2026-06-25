@@ -1,14 +1,16 @@
 ---
 title: PETOS
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # PETOS
+
+PETOS is retained as the legacy application layer boundary under EAi 2.0.
 
 ## 1) Purpose
 PETOS (Application Layer) hosts application experiences and application-facing modules (Security+, CS50, PBQ, UI).

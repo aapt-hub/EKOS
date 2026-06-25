@@ -1,16 +1,16 @@
 ---
 title: LOS Governance
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # LOS Governance
 
-LOS governance is implemented through M2.10 and remains the authority boundary for runtime execution.
+LOS governance is retained as legacy runtime authority material under the EAi umbrella.
 
 Implemented governance chain:
 
@@ -20,7 +20,11 @@ Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execu
 
 Primary maintained pages:
 
+- [EAi Governance](../governance.md)
+- [EAi Architecture](../architecture.md)
+- [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md)
 - [Governance Enforcement](20-Governance/Governance-Enforcement.md)
+- [AI Provider Governance](20-Governance/AI-Provider-Governance.md)
 - [Runtime Certification](20-Governance/Runtime-Certification.md)
 - [Trust Authority](30-Trust/Trust-Authority.md)
 - [Trust Monitoring](30-Trust/Trust-Monitoring.md)

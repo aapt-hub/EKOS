@@ -1,16 +1,16 @@
 ---
 title: LOS
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # LOS
 
-LOS is the Operating System Truth Kernel for EKOS.
+LOS is the legacy policy, trust, identity, authorization, risk, and compliance kernel under EAi 2.0.
 
 ## Purpose
 
@@ -98,6 +98,6 @@ Invoke-Pester .\los\tests\ -Output Minimal
 LOS does not own PETOS application behavior or host OS implementation. It provides the truth and authority layer consumed by EKOS and PETOS.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

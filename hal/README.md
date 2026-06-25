@@ -1,14 +1,16 @@
 ---
 title: HAL (Host Abstraction Layer)
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # HAL (Host Abstraction Layer)
+
+HAL is retained as the legacy host abstraction layer under EAi 2.0.
 
 ## 1) Purpose
 HAL abstracts host OS/runtime detection and platform-specific behavior into a stable boundary.

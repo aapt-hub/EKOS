@@ -1,16 +1,16 @@
 ---
 title: EKOS
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # EKOS
 
-EKOS is the Runtime Execution Engine.
+EKOS is retained as the legacy execution and AI-knowledge engine under EAi 2.0.
 
 ## Purpose
 
@@ -38,6 +38,6 @@ PETOS is the Application Layer. PETOS uses EKOS execution services while remaini
 - Phase 3 Runtime Authority Kernel integration.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

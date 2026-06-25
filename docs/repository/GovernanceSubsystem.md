@@ -1,18 +1,18 @@
 ---
 title: Governance Subsystem
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # Governance Subsystem
 
 ## Purpose
 
-Governance enforces LOS contract truth before runtime execution.
+Governance enforces EAi policy and legacy LOS contract truth before runtime execution.
 
 ## Responsibilities
 
@@ -22,6 +22,7 @@ Governance enforces LOS contract truth before runtime execution.
 - Evaluate runtime policy.
 - Produce governance provenance.
 - Emit compliance reports.
+- Support EAi governance umbrella review.
 
 ## Dependencies
 
@@ -39,6 +40,6 @@ M2.6 Governance Enforcement is implemented and covered by `los/tests/LOS.Governa
 Governance feeds trust recovery, trust policy, trust dashboard, and Phase 3 Runtime Authority Kernel work.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

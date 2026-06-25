@@ -1,7 +1,7 @@
 ---
 title: Dependency Map
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
@@ -34,6 +34,6 @@ Contract -> Schema -> Attestation -> Policy -> Execution Broker -> Runtime Execu
 Runtime modules use built-in PowerShell and .NET APIs. Tests use Pester.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

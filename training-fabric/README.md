@@ -1,14 +1,16 @@
 ---
 title: Training Fabric
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # Training Fabric
+
+Training Fabric is the legacy dataset and evaluation scaffolding layer under EAi 2.0.
 
 ## 1) Purpose
 Training Fabric contains datasets, evaluation harnesses, registries, checkpoints, and preparation steps (LoRA/quantization prep) used by PETOS systems.

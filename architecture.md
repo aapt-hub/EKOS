@@ -1,122 +1,107 @@
 ---
-title: EKOS Architecture
+title: EAi Architecture
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
-# EKOS Architecture
+# EAi Architecture
 
 Author: Abner Pauneto
 
 ## Purpose
 
-This document defines the current EKOS / LOS / PETOS layered architecture through LOS-TRUST-004 Runtime Trust Recovery.
+This document defines the EAi 2.0 enterprise governance architecture.
+
+Architecture is one governed domain under EAi. Governance remains the umbrella.
 
 ## Layer Model
 
 ```text
-PETOS Application Layer
-EKOS Runtime Execution Engine
-LOS Operating System Truth Kernel
-Linux / Windows Host Runtime Layer
+EAi Governance
+-> EAi Architecture
+-> EAi Knowledge
+-> EAi Platform
+-> Core Platform Components
+-> Industry Solution Packs
 ```
 
-## Current Runtime Chain
+## Core Platform Components
 
-```text
-Contract
--> Schema
--> Attestation
--> Policy
--> Execution Broker
--> Runtime Execution
--> Certification
--> Trust Authority
--> Trust Monitoring
--> Trust Enforcement
--> Trust Recovery
--> Revalidation
--> Trust Authority Review
--> Active
-```
+The core platform components are:
 
-## Future Runtime Chain
+- `LOSi`
+- `EKOSi`
+- `CONTROLi`
+- `INDEXi`
+- `FACTORYi`
+- `PROVIDERi`
+- `CONSOLEi`
+- `SDKi`
+- `USEROBSERVEi`
 
-```text
-Contract
--> Schema
--> Attestation
--> Policy
--> Execution Broker
--> Runtime Execution
--> Certification
--> Trust Authority
--> Trust Monitoring
--> Trust Enforcement
--> Trust Recovery
--> Revalidation
--> Trust Authority Review
--> Active
--> Trust Policy
--> Trust Dashboard
--> Runtime Authority Kernel
-```
+## Governance Model
 
-## Implemented Architecture
+- `LOSi` owns policy, trust, identity, authorization, risk, and compliance checks.
+- `EKOSi` owns AI, knowledge, recommendations, learning, and the competency graph.
+- `CONTROLi` owns orchestration, workflows, scheduling, and routing.
+- `INDEXi` owns catalog, discovery, search, metadata, and dependency lineage.
+- `FACTORYi` owns module and repository generation.
+- `PROVIDERi` owns all provider abstraction for AI, cloud, database, messaging, and identity integrations.
+- `CONSOLEi` is the enterprise command center.
+- `SDKi` is the developer entry point.
+- `USEROBSERVEi` provides per-user observability and activity timeline tracking.
 
-### LOS: Operating System Truth Kernel
+## Capability Graph
 
-LOS owns contract truth, schema truth, attestation truth, governance enforcement, runtime certification, trust authority, trust monitoring, trust enforcement, and trust recovery.
+Capability Graph is a first-class architectural component.
 
-Implemented LOS capabilities:
+It connects:
 
-- Governance Enforcement: contract, schema, attestation, policy, broker, provenance, and compliance report checks.
-- Runtime Certification: evidence generation, parity, ledger, report, failure taxonomy, and certification harness.
-- Runtime Trust Authority: trust evidence, trust decisions, trust ledger, trust report, authority wrappers.
-- Runtime Trust Monitoring: scoring, alerts, runtime events, health reports.
-- Runtime Trust Enforcement: quarantine, deny, revoke, persisted enforcement state.
-- Runtime Trust Recovery: evidence-based recovery request, approval, revalidation, trust authority review, append-only recovery ledger.
+- business capabilities
+- platform capabilities
+- solution pack capabilities
+- governance rules
+- operational evidence
+- owner notification workflows
 
-### LOS-TRUST-004: Runtime Trust Recovery
+## Promotion Model
 
-Capability ID: LOS-TRUST-004  
-Roadmap Milestone: M2.11  
-Name: Runtime Trust Recovery  
-Domain: Trust  
-Layer: LOS Trust Authority Layer
+- Development is controlled by documentation-first and structure-first work until runtime is approved.
+- Development -> Test -> Production promotion requires controller approval.
+- No uncontrolled recursive automation is permitted.
+- All generated modules must pass controller tests before promotion.
 
-M2.11 is roadmap tracking only. LOS-TRUST-004 is the architectural capability. Recovery approval does not restore trust by itself; approval only authorizes revalidation. A subject can return to Active only after certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
+## Solution Pack Model
 
-### EKOS: Runtime Execution Engine
+Solution packs are optional, certified, composable, and deployable from `CONSOLEi` and `FACTORYi`.
 
-EKOS owns deterministic execution and graph runtime behavior. It consumes LOS contracts and trust decisions instead of redefining them.
+`INDEXi` and `FACTORYi` remain structure and planning services unless runtime is explicitly approved.
 
-### PETOS: Application Layer
+## Legacy Architecture
 
-PETOS owns application-facing workflows and UI/application integration. It uses EKOS execution and LOS truth without owning runtime authority.
-
-### Host Runtime Layer
-
-Linux and Windows provide host runtimes. Host-specific behavior stays outside LOS truth definitions.
+The older EKOS / LOS / PETOS runtime architecture is preserved as compatibility material in the legacy wiki pages and subsystem folders.
 
 ## Design Constraints
 
-- Deterministic execution behavior must be preserved.
-- Trust decisions must fail closed.
-- JSONL ledgers are append-only unless a module explicitly documents read-only state replacement.
-- Public function names are stable unless a future compatibility layer is added.
-- Documentation must not describe planned milestones as implemented.
+- Governance is the top-level control surface.
+- Monthly governance review handles normal changes.
+- Weekly review is reserved for critical risk, security, and runtime issues.
+- All provider integrations must go through `PROVIDERi`.
+- All runtime decisions must be policy checked by `LOSi`.
+- All recommendations must be explainable and auditable.
+- Human approval is required before production changes.
+- Dev/test/prod promotion must remain strict and explicit.
 
 ## Roadmap Boundary
 
-Implemented: M2.6 through M2.11.  
-Planned: M2.12 through M2.13 and Phase 3 Runtime Authority Kernel.
+Implemented: EAi 2.0 documentation and skeleton alignment.
+Planned: runtime expansions only after controller approval.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

@@ -1,24 +1,25 @@
 ---
-title: EKOS Wiki Home
+title: EAi Wiki Home
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
-# EKOS Wiki Home
+# EAi Wiki Home
 
-EKOS is documented as a layered runtime authority system:
+EAi 2.0 is documented as a governed enterprise architecture system:
 
 ```text
-PETOS Application Layer
-EKOS Runtime Execution Engine
-LOS Operating System Truth Kernel
-Linux / Windows Host Runtime Layer
+Governance
+Architecture
+Knowledge
+Platform
+Industry Solutions
 ```
 
-Start with [Overview](01-Overview.md) and [Runtime Authority Model](10-Architecture/Runtime-Authority-Model.md).
+Start with [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md) and [Governance](../governance.md).
 
 Author: Abner Pauneto

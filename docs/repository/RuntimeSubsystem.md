@@ -1,7 +1,7 @@
 ---
 title: Runtime Subsystem
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
@@ -29,13 +29,13 @@ The runtime subsystem executes deterministic EKOS workflows while consuming LOS 
 
 ## Current Maturity
 
-The LOS authority chain is implemented through M2.10. Broader Phase 3 Runtime Authority Kernel work remains planned.
+The LOS authority chain is implemented through M2.10. Broader Phase 3 Runtime Authority Kernel work remains planned under the EAi umbrella.
 
 ## Future Roadmap
 
 Runtime will integrate with recovery, trust policy, dashboard, and kernel controls as those milestones are implemented.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

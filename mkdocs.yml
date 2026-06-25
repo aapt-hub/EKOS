@@ -1,9 +1,34 @@
-﻿site_name: EKOS / PETOS
-site_description: Enterprise Engineering Knowledge Operating System
+site_name: EAi 2.0
+site_description: Enterprise Governance Architecture
 
 theme:
   name: material
 
 nav:
   - Home: README.md
+  - Governance: governance.md
   - Architecture: architecture.md
+  - Methodology: methodology.md
+  - Roadmap: roadmap.md
+  - Master Prompt: master-prompt.md
+  - Docs:
+      - EAi 2.0 Enterprise Governance Architecture: docs/EAi-2.0-Enterprise-Governance-Architecture.md
+      - Governance Loops: docs/Governance-Loops.md
+      - Capability Graph: docs/Capability-Graph.md
+      - Business Governance: docs/Business-Governance.md
+      - Module Lifecycle: docs/Module-Lifecycle.md
+      - Provider Governance: docs/Provider-Governance.md
+      - Runtime Control Guardrails: docs/Runtime-Control-Guardrails.md
+  - Platform: platform/README.md
+  - Solutions: solutions/README.md
+  - Prompts: prompts/README.md
+  - Audits: audits/README.md
+  - Skeleton:
+      - Architectures: architectures/README.md
+      - Lessons Learned: lessons-learned/README.md
+      - Stacks: stacks/README.md
+      - Standards: standards/README.md
+  - Wiki:
+      - Home: wiki/Home.md
+      - Overview: wiki/01-Overview.md
+      - Legacy Architecture: wiki/Architecture.md

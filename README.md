@@ -1,81 +1,111 @@
 ---
-title: EKOS
+title: EAi 2.0
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
-# EKOS
+# EAi 2.0
 
-Execution Knowledge Operating System
+EAi 2.0 is the Enterprise Governance Architecture for the platform.
 
-Repository Status: Private Proprietary Development Repository
+It is the governing architecture and platform foundation for enterprise capabilities, business operations, AI, security, compliance, DevSecOps, observability, automation, and industry solutions.
 
-## Architecture Summary
+## Core Domains
 
-- LOS — Logic Operating System
-- EKOS — Execution Runtime Engine
-- PETOS — Application Framework Layer
-- Host Runtime Layer — Linux, Windows, PowerShell
+- EAi.Constitution
+- EAi.Governance
+- EAi.Methodology
+- EAi.Architecture
+- EAi.Knowledge
+- EAi.Platform
 
-## Runtime Chain
+## Core Platform Components
 
-```text
-Contract
--> Schema
--> Attestation
--> Policy
--> Execution Broker
--> Runtime Execution
--> Certification
--> Trust Authority
--> Trust Monitoring
--> Trust Enforcement
--> Trust Recovery
--> Revalidation
--> Trust Authority Review
--> Active
-```
+- LOSi - policy, trust, identity, authorization, risk, compliance
+- EKOSi - AI, knowledge, recommendations, learning, competency graph
+- CONTROLi - orchestration, workflows, scheduling, routing
+- INDEXi - catalog, discovery, search, metadata, dependency lineage
+- FACTORYi - module and repository generation, engineering automation
+- PROVIDERi - provider abstraction for AI, cloud, database, messaging, identity
+- CONSOLEi - enterprise command center
+- SDKi - CLI, APIs, developer tooling
+- USEROBSERVEi - per-user observability and activity timeline
+- Industry Solution Packs
 
-## Current Implementation Status
+## Governance-First Model
 
-Implemented through M2.13:
+Governance is the top-level umbrella.
 
-- M2.6 Governance Enforcement
-- M2.7 Runtime Certification
-- M2.8 Runtime Trust Authority
-- M2.9 Runtime Trust Monitoring
-- M2.10 Runtime Trust Enforcement
-- M2.11 Runtime Trust Recovery
-- M2.12 Trust Policy Engine
-- M2.13 Runtime Trust Dashboard
+Architecture is one governed domain under EAi.
 
-Planned:
+Capability Graph is a first-class architectural component.
 
-- Phase 3 Runtime Authority Kernel
+## Review Cadence
 
-## Runtime Trust Recovery
+- Monthly review for normal architecture, business, and module changes.
+- Weekly review only for critical items: vulnerabilities, patches, security advisories, provider changes, certificate expiration, secrets exposure, and runtime health.
+- No uncontrolled recursive automation.
+- Controller-gated review lifecycle.
+- Human approval is required before production changes.
+- Strict dev/test/prod promotion is required.
 
-Capability ID: LOS-TRUST-004  
-Roadmap Milestone: M2.11  
-Name: Runtime Trust Recovery  
-Domain: Trust  
-Layer: LOS Trust Authority Layer
+## Documentation And Structure
 
-M2.11 is roadmap tracking only. LOS-TRUST-004 is the architectural capability. Recovery approval does not restore trust; it authorizes revalidation. A subject may return to Active only after certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
+- Documentation-first and structure-first are used where runtime is not yet approved.
+- All recommendations must be explainable and auditable.
+- All provider integrations must go through `PROVIDERi`.
+- All runtime decisions must be policy-checked by `LOSi`.
+
+## Primary References
+
+- [EAi 2.0 Enterprise Governance Architecture](docs/EAi-2.0-Enterprise-Governance-Architecture.md)
+- [Governance](governance.md)
+- [Architecture](architecture.md)
+- [Methodology](methodology.md)
+- [Roadmap](roadmap.md)
+- [Master Prompt](master-prompt.md)
+
+## Industry Solution Packs
+
+Industry solution packs are optional, certified, composable, and deployable from `CONSOLEi` and `FACTORYi` without forcing the full platform to be generated for every customer.
+
+Examples:
+
+- Healthcarei
+- Accountingi
+- MSPi
+- CRMi
+- ERPi
+- ITSMi
+- Securityi
+- Compliancei
+- Financei
+- Legali
+- Educationi
+- Governmenti
+- Retaili
+- Manufacturingi
+- Logisticsi
+
+## Legacy Notes
+
+The older EKOS / LOS / PETOS documentation remains in the repository as legacy and compatibility material. The EAi 2.0 docs supersede the older framing where the two conflict.
+
+Author: Abner Pauneto
 
 ## Repository Structure
 
-- `los/`: Logic Operating System truth, governance, certification, trust authority, monitoring, enforcement, and recovery.
-- `ekos/`: Execution Runtime Engine modules and audit orchestration.
-- `petos/`: Application Framework Layer boundary.
-- `graph/`: Graph runtime and canonical serialization tooling.
-- `docs/repository/`: Repository intelligence and metadata reports.
-- `wiki/`: Architecture, governance, trust, runtime, operations, and roadmap documentation.
-- `test-harness/`: Determinism, parity, and runtime test harness support.
+- `platform/`: EAi platform components and skeletons.
+- `solutions/`: Industry solution packs.
+- `prompts/`: Master, governance, architecture, platform, module, and audit prompts.
+- `audits/`: Architecture, governance, security, compliance, module, and release audit artifacts.
+- `docs/`: EAi governance, methodology, architecture, and control references.
+- `wiki/`: Legacy and compatibility docs organized by EAi domains.
+- `los/`, `ekos/`, `petos/`, `graph/`: Existing subsystem history and implementation material.
 
 ## Validation Process
 
@@ -89,7 +119,6 @@ Invoke-Pester .\los\tests\ -Output Minimal
 Author: Abner Pauneto  
 Copyright: Copyright (c) 2026 Abner Pauneto  
 License: Proprietary – All Rights Reserved  
-Repository Status: Private Development
 
 ## License
 

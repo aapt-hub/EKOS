@@ -1,7 +1,7 @@
 ---
 title: Trust Subsystem
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
@@ -59,6 +59,6 @@ Layer: LOS Trust Authority Layer
 M2.11 is roadmap tracking only. LOS-TRUST-004 is the architectural capability. Recovery approval does not restore trust. Approval moves recovery into revalidation, and Active requires certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

@@ -1,18 +1,18 @@
 ---
 title: Module Inventory
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
 # Module Inventory
 
 ## Purpose
 
-Inventory of EKOS-owned PowerShell modules relevant to current LOS and EKOS runtime authority work.
+Inventory of legacy EKOS-owned PowerShell modules relevant to EAi governance and runtime authority work.
 
 ## LOS Governance Modules
 
@@ -52,9 +52,9 @@ Inventory of EKOS-owned PowerShell modules relevant to current LOS and EKOS runt
 
 ## Current Maturity
 
-LOS runtime authority is implemented through M2.11. M2.12 through M2.13 and Phase 3 remain planned.
+EAi governance is the current umbrella. Legacy LOS runtime authority is implemented through M2.11, and newer EAi structure work remains documentation-first unless explicitly approved.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

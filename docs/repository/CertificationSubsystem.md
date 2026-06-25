@@ -1,7 +1,7 @@
 ---
 title: Certification Subsystem
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
@@ -38,6 +38,6 @@ M2.7 Runtime Certification is implemented and covered by `los/tests/Phase2.7.Tes
 Certification feeds trust authority, trust recovery, trust policy, and dashboard reporting.
 
 Author: Abner Pauneto  
-Project: EKOS  
+Project: EAi
 Repository: EKOS  
 License: Proprietary - All Rights Reserved

@@ -1,21 +1,21 @@
 ---
-title: Architecture
+title: EAi Legacy Architecture
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 ---
 
-# Architecture
+# Legacy Architecture
 
-The maintained architecture pages now live under `wiki/10-Architecture/`.
+The maintained EAi 2.0 architecture pages now live at the repository root and in `docs/`.
 
-- [LOS Architecture](10-Architecture/LOS-Architecture.md)
-- [LOS Architecture v2](10-Architecture/LOS-Architecture-v2.md)
-- [Runtime Authority Model](10-Architecture/Runtime-Authority-Model.md)
+This page is retained as legacy EKOS-era compatibility material.
 
-Current implemented state: M2.6 through M2.10.
+- [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md)
+- [EAi Architecture](../architecture.md)
+- [EAi Governance](../governance.md)
 
 Author: Abner Pauneto
