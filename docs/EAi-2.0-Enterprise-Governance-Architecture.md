@@ -1,59 +1,34 @@
-# EAi 2.0 Enterprise Governance Architecture
+# ATOMIx Enterprise Governance Architecture
 
-EAi 2.0 is the legacy enterprise governance layer that now sits under the frozen EAi Reference Architecture.
+ATOMIx is an Enterprise Asset Intelligence Platform.
 
-## Summary
+Mission: One Kernel. One Graph. One Enterprise.
 
-- Governance is the top-level umbrella.
-- Architecture is one governed domain.
-- Capability Graph is a first-class architectural component.
-- Platform components are organized around policy, control, knowledge, and operations.
-- Industry solution packs are optional, certified, composable, and deployable from `CONSOLEi` and `FACTORYi`.
+Governance is expressed through Kernel contracts, Enterprise Graph relationships, policies, capability ownership, lifecycle state, validation evidence, certification evidence, and audit trails.
 
-## EAi Domains
+## Governance Principles
 
-- `EAi.Constitution`
-- `EAi.Governance`
-- `EAi.Methodology`
-- `EAi.Architecture`
-- `EAi.Knowledge`
-- `EAi.Platform`
+1. The Kernel owns only contracts. Never business logic, runtime behavior, or implementations.
+2. Everything extends the Kernel. Modules never redefine core concepts.
+3. One Enterprise Graph. Every governed asset is represented inside the graph and connected to policies, capabilities, evidence, telemetry, lifecycle, and ownership.
+4. Enterprise Intelligence comes from the Graph. EKOSi reasons over graph data, not isolated prompts.
+5. Runtime is replaceable. Contracts define the platform. Runtime implements contracts.
 
-## Core Platform Components
+## Governance Scope
 
-- `LOSi`
-- `EKOSi`
-- `CONTROLi`
-- `INDEXi`
-- `FACTORYi`
-- `PROVIDERi`
-- `CONSOLEi`
-- `SDKi`
-- `USEROBSERVEi`
+Governance applies to people, devices, servers, applications, containers, databases, APIs, business capabilities, customers, suppliers, documents, AI models, facilities, vehicles, industrial equipment, and cloud resources.
 
-## Review Cadence
+## Platform Accountability
 
-- Monthly review for normal architecture, business, and module work.
-- Weekly review only for critical items.
+- Kernel defines contracts, schemas, registries, validation, and discovery.
+- LOSi governs identity, trust, authentication, authorization, PKI, policy, and authority.
+- DEVICEi governs device enrollment, inventory, compliance, patch state, lifecycle, configuration, Puppet integration, and Ansible compatibility as documentation and contracts only in M3.3.
+- SECURITYi governs vulnerability management, risk, compliance, and incident response.
+- OBSERVEi governs telemetry, logs, metrics, tracing, and health evidence.
+- EKOSi enriches the Enterprise Graph and produces explainable recommendations from graph data.
 
-## Control Requirements
+## Methodology Gate
 
-- No uncontrolled recursive automation.
-- Controller-gated review lifecycle.
-- Strict dev/test/prod promotion.
-- Human approval before production changes.
-- All provider integrations through `PROVIDERi`.
-- All runtime decisions policy-checked by `LOSi`.
+Documentation, contracts, schemas, registries, validation, tests, runtime, integration, certification, release.
 
-## Acceptance Criteria
-
-- EAi 2.0 is defined as Enterprise Governance Architecture.
-- Governance remains the top-level umbrella.
-- Architecture is documented as one governed domain.
-- Capability Graph is first-class.
-- Industry solution packs remain optional and composable.
-- Documentation-first and structure-first are used where runtime is not yet approved.
-
-## Legacy Material
-
-Legacy EKOS-era runtime material remains available, but the frozen reference architecture supersedes older framing where conflicts exist.
+Runtime implementation shall never precede documentation and contracts.

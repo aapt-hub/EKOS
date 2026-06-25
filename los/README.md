@@ -1,103 +1,54 @@
----
-title: LOS
-author: Abner Pauneto
-project: EAi
-repository_status: Private Development
-license: Proprietary
-copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-25
----
+# ATOMIx Enterprise Asset Intelligence Platform
 
-# LOS
+ATOMIx is an Enterprise Asset Intelligence Platform.
 
-LOS is the legacy policy, trust, identity, authorization, risk, and compliance kernel under EAi 2.0.
+Mission: One Kernel. One Graph. One Enterprise.
 
-## Purpose
+The platform is contract-first, graph-native, AI-assisted, and documentation-driven. Every enterprise asset shares a common model: identity, relationships, policies, capabilities, events, telemetry, lifecycle, governance, and intelligence.
 
-LOS owns truth contracts, schemas, attestations, governance enforcement, runtime certification, runtime trust authority, continuous trust monitoring, runtime trust enforcement, and runtime trust recovery.
+## Enterprise Asset Intelligence
 
-## Current Runtime Chain
+Everything is represented as an Enterprise Asset. People, devices, servers, applications, containers, databases, APIs, business capabilities, customers, suppliers, documents, AI models, facilities, vehicles, industrial equipment, and cloud resources all share one governed lifecycle.
 
-```text
-Contract
--> Schema
--> Attestation
--> Policy
--> Execution Broker
--> Runtime Execution
--> Certification
--> Trust Authority
--> Trust Monitoring
--> Trust Enforcement
--> Trust Recovery
--> Revalidation
--> Trust Authority Review
--> Active
-```
+## Immutable Principles
 
-## Implemented Milestones
+1. The Kernel owns only contracts. Never business logic, runtime behavior, or implementations.
+2. Everything extends the Kernel. Modules never redefine core concepts.
+3. One Enterprise Graph. Every asset is represented inside a graph and everything is connected.
+4. Enterprise Intelligence comes from the Graph. EKOSi reasons over graph data, not isolated prompts.
+5. Runtime is replaceable. Contracts define the platform. Runtime implements contracts.
 
-- M2.6 Governance Enforcement
-- M2.7 Runtime Certification
-- M2.8 Runtime Trust Authority
-- M2.9 Runtime Trust Monitoring
-- M2.10 Runtime Trust Enforcement
-- M2.11 Runtime Trust Recovery
-- M2.12 Runtime Trust Policy Engine
+## Platform Modules
 
+- Kernel: contracts, schemas, registries, validation, discovery.
+- LOSi: identity, trust, authentication, authorization, governance, PKI, and policy.
+- DEVICEi: enterprise device platform for enrollment, inventory, compliance, lifecycle, configuration, endpoint management, hardware identity, asset intelligence, Puppet integration, and Ansible compatibility. Current status: documentation and contracts only. No runtime and no agent implementation.
+- CONTROLi: workflow, scheduling, automation, and orchestration.
+- OBSERVEi: telemetry, logs, metrics, tracing, and health.
+- SECURITYi: vulnerability management, risk, compliance, and incident response.
+- EKOSi: AI, planning, optimization, recommendations, and knowledge graph enrichment.
+- FACTORYi: repository generation, module generation, SDK, packaging, and CI/CD.
+- PROVIDERi: external providers, cloud, AI providers, and SaaS integration.
+- CONSOLEi: unified enterprise administration portal.
 
-## Subsystems
+## Engineering Order
 
-### Governance Enforcement
+Documentation, contracts, schemas, registries, validation, tests, runtime, integration, certification, release.
 
-Located under `los/modules/`.
+Runtime implementation shall never precede documentation and contracts.
 
-- `LOS.ContractEnforcer.psm1`
-- `LOS.PolicyEngine.psm1`
-- `LOS.ExecutionBroker.psm1`
-- `LOS.ProvenanceEngine.psm1`
-- `LOS.ComplianceReport.psm1`
+## Roadmap
 
-### Runtime Certification
+M3.0 Kernel Contracts
+M3.1 Capability Contracts
+M3.2 Schemas & Registries
+M3.3 DEVICEi Foundation
+M3.4 INDEXi Metadata
+M3.5 Validation & Certification
+M3.6 Graph Integration Contracts
+M3.7 Runtime Host Abstraction
+M4 Runtime Implementation
 
-Located under `los/certification/`.
+## Legacy Note
 
-- `CertificationEvidence.psm1`
-- `CertificationHarness.psm1`
-- `CertificationLedger.psm1`
-- `CertificationReport.psm1`
-- `CertificationParity.psm1`
-- `CertificationFailureTaxonomy.psm1`
-
-### Runtime Trust
-
-Located under `los/trust/`.
-
-- `LOS.RuntimeTrustAuthority.psm1`
-- `LOS.TrustEvidence.psm1`
-- `LOS.TrustDecision.psm1`
-- `LOS.TrustLedger.psm1`
-- `LOS.TrustReport.psm1`
-- `LOS.TrustScoring.psm1`
-- `LOS.TrustAlerts.psm1`
-- `LOS.RuntimeTrustMonitor.psm1`
-- `LOS.RuntimeTrustEnforcement.psm1`
-- `LOS.TrustRecovery.psm1`
-
-Runtime Trust Recovery is capability LOS-TRUST-004. M2.11 is roadmap tracking only. Recovery approval authorizes revalidation; it does not restore trust. Active requires certification validation, attestation validation, policy validation, and trust authority review. Revoked subjects cannot directly recover.
-
-## Tests
-
-```powershell
-Import-Module Pester -MinimumVersion 5.0 -Force
-Invoke-Pester .\los\tests\ -Output Minimal
-```
-
-## Ownership Boundary
-
-LOS does not own PETOS application behavior or host OS implementation. It provides the truth and authority layer consumed by EKOS and PETOS.
-
-Author: Abner Pauneto  
-Project: EAi
-Repository: EKOS  
-License: Proprietary - All Rights Reserved
+Legacy EKOS, LOS, PETOS, EGK, ECK, EDTi, ESF, GRAPHi, DATAi, and AUTOMATEi terminology is retained only as historical context where needed. It does not override ATOMIx Enterprise Asset Intelligence.

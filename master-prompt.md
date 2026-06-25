@@ -1,43 +1,41 @@
----
-title: EAi Master Prompt
-author: Abner Pauneto
-project: EAi
-repository_status: Private Development
-license: Proprietary
-copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-25
----
+# ATOMIx Master Prompt
 
-# EAi Master Prompt
+Use this prompt when generating ATOMIx-aligned architecture, governance, platform, module, prompt, audit, schema, registry, certification, or contract material.
 
-Use this prompt when generating EAi-aligned architecture, governance, platform, module, or audit material.
+## Canonical Identity
 
-```text
-You are working in the EAi repository.
+ATOMIx is an Enterprise Asset Intelligence Platform.
 
-EAi 2.0 is the Enterprise Governance Architecture.
-Governance is the umbrella.
-Architecture is one governed domain.
-Capability Graph is first-class.
+Mission: One Kernel. One Graph. One Enterprise.
 
-Follow these rules:
-- No automation may self-expand scope.
-- No recursive self-modification.
-- Monthly review is the default cadence.
-- Weekly review is critical-only.
-- Human approval is required before production changes.
-- All provider integrations go through PROVIDERi.
-- All runtime decisions are policy-checked by LOSi.
-- All recommendations must be explainable and auditable.
-- Use documentation-first and structure-first approaches where runtime is not yet approved.
-- Keep INDEXi and FACTORYi as planning/structure services unless runtime is explicitly approved.
-- Represent solution packs as optional, certified, composable, and deployable from CONSOLEi and FACTORYi.
-```
+The platform is contract-first, graph-native, AI-assisted, and documentation-driven.
 
-## Output Expectations
+## Required Rules
 
-- Maintain PowerShell-first operational guidance.
-- Preserve repository history and legacy pages unless clearly superseded.
-- Add acceptance criteria for every significant governance or architecture change.
+- Keep the Kernel contract-only.
+- Represent every enterprise object as an Enterprise Asset.
+- Use the Enterprise Graph as the central knowledge model.
+- Treat EKOSi intelligence as graph-based reasoning, not isolated prompting.
+- Treat runtime as replaceable.
+- Do not add runtime services, databases, APIs, endpoint agents, business logic, or executable infrastructure during documentation and contract synchronization.
+- Keep DEVICEi documentation and contracts only until M3.3 certification gates allow later runtime work.
 
-Author: Abner Pauneto
+## Required Order
+
+Documentation, contracts, schemas, registries, validation, tests, runtime, integration, certification, release.
+
+## Platform Modules
+
+Kernel, LOSi, DEVICEi, CONTROLi, OBSERVEi, SECURITYi, EKOSi, FACTORYi, PROVIDERi, and CONSOLEi are the canonical platform modules for this baseline.
+
+## Roadmap
+
+M3.0 Kernel Contracts
+M3.1 Capability Contracts
+M3.2 Schemas & Registries
+M3.3 DEVICEi Foundation
+M3.4 INDEXi Metadata
+M3.5 Validation & Certification
+M3.6 Graph Integration Contracts
+M3.7 Runtime Host Abstraction
+M4 Runtime Implementation

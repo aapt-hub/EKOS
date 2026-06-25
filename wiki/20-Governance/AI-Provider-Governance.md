@@ -1,190 +1,54 @@
----
-title: AI Provider Governance
-author: Abner Pauneto
-project: EAi
-repository_status: Private Development
-license: Proprietary
-copyright: Copyright (c) 2026 Abner Pauneto
-last_updated: 2026-06-25
----
+# ATOMIx Enterprise Asset Intelligence Platform
 
-# AI Provider Governance
+ATOMIx is an Enterprise Asset Intelligence Platform.
 
-This page defines the Enterprise AI Governance Model for EAi 2.0.
+Mission: One Kernel. One Graph. One Enterprise.
 
-M0.3 requirement:
+The platform is contract-first, graph-native, AI-assisted, and documentation-driven. Every enterprise asset shares a common model: identity, relationships, policies, capabilities, events, telemetry, lifecycle, governance, and intelligence.
 
-- Define which EAi components may use public or private AI providers.
-- Preserve engineering flexibility without weakening security.
+## Enterprise Asset Intelligence
 
-Purpose:
+Everything is represented as an Enterprise Asset. People, devices, servers, applications, containers, databases, APIs, business capabilities, customers, suppliers, documents, AI models, facilities, vehicles, industrial equipment, and cloud resources all share one governed lifecycle.
 
-- Balance engineering innovation with enterprise security, privacy, compliance, and customer data protection.
-- Define which EAi components may use public or private AI providers.
-- Keep `PROVIDERi` as the only approved AI provider abstraction.
+## Immutable Principles
 
-## Governance Principles
+1. The Kernel owns only contracts. Never business logic, runtime behavior, or implementations.
+2. Everything extends the Kernel. Modules never redefine core concepts.
+3. One Enterprise Graph. Every asset is represented inside a graph and everything is connected.
+4. Enterprise Intelligence comes from the Graph. EKOSi reasons over graph data, not isolated prompts.
+5. Runtime is replaceable. Contracts define the platform. Runtime implements contracts.
 
-- Applications must never communicate directly with an AI provider.
-- All AI traffic is mediated by `CHATBOTi`, `LOSi`, `INDEXi`, `EKOSi`, `PROVIDERi`, and `CONTROLi`.
-- All AI interactions remain subject to LOS policy validation, context retrieval, workflow execution governance, and evidence capture.
-- Provider selection must be configurable by policy and auditable end to end.
-- Customer data, documents, conversations, and business workflows must not be transmitted to public AI providers by default.
+## Platform Modules
 
-## Approved AI Traffic Flow
+- Kernel: contracts, schemas, registries, validation, discovery.
+- LOSi: identity, trust, authentication, authorization, governance, PKI, and policy.
+- DEVICEi: enterprise device platform for enrollment, inventory, compliance, lifecycle, configuration, endpoint management, hardware identity, asset intelligence, Puppet integration, and Ansible compatibility. Current status: documentation and contracts only. No runtime and no agent implementation.
+- CONTROLi: workflow, scheduling, automation, and orchestration.
+- OBSERVEi: telemetry, logs, metrics, tracing, and health.
+- SECURITYi: vulnerability management, risk, compliance, and incident response.
+- EKOSi: AI, planning, optimization, recommendations, and knowledge graph enrichment.
+- FACTORYi: repository generation, module generation, SDK, packaging, and CI/CD.
+- PROVIDERi: external providers, cloud, AI providers, and SaaS integration.
+- CONSOLEi: unified enterprise administration portal.
 
-```text
-Application
--> CHATBOTi
--> LOSi Policy Validation
--> INDEXi Context Retrieval
--> EKOSi Reasoning
--> PROVIDERi AI Routing
--> Selected AI Provider
--> CONTROLi Workflow Execution
--> Audit & Evidence Ledger
-```
+## Engineering Order
 
-## AI Provider Categories
+Documentation, contracts, schemas, registries, validation, tests, runtime, integration, certification, release.
 
-### Category A - Engineering AI
+Runtime implementation shall never precede documentation and contracts.
 
-Applies to:
+## Roadmap
 
-- Development
-- Engineering
-- Documentation
-- Repository generation
-- Architecture design
-- Testing
-- Prompt engineering
-- Knowledge engineering
-- FACTORYi
-- INDEXi
-- Developer tools
-- Internal engineering assistants
+M3.0 Kernel Contracts
+M3.1 Capability Contracts
+M3.2 Schemas & Registries
+M3.3 DEVICEi Foundation
+M3.4 INDEXi Metadata
+M3.5 Validation & Certification
+M3.6 Graph Integration Contracts
+M3.7 Runtime Host Abstraction
+M4 Runtime Implementation
 
-Approved AI sources:
+## Legacy Note
 
-- Private LLMs
-- Self-hosted models
-- Approved public AI providers
-- Future enterprise AI providers through `PROVIDERi`
-
-Purpose:
-
-- Accelerate engineering while maintaining governance.
-
-### Category B - Core Platform Intelligence
-
-Applies to:
-
-- EKOSi
-- LOSi
-- PETOSi
-
-Approved AI sources:
-
-- Private LLMs
-- Self-hosted models
-- Approved public AI providers
-- Customer-owned enterprise models
-
-Requirements:
-
-- All AI requests are governed by `LOSi`.
-- AI routing is controlled through `PROVIDERi`.
-- Context is retrieved through `INDEXi`.
-- Workflow execution is allowed only through `CONTROLi`.
-- Full audit evidence is required.
-- Provider selection is configurable by policy.
-- Customer policy may disable public providers entirely.
-
-### Category C - Business and Customer Modules
-
-Applies to all customer-facing products, including:
-
-- Healthcarei
-- MSPi
-- Accountingi
-- ERPi
-- CRMi
-- Legali
-- Constructioni
-- Governmenti
-- Educationi
-- Manufacturingi
-- Retaili
-- Hospitalityi
-- All future Industry Solution modules
-
-Approved AI sources:
-
-- Private LLMs
-- Self-hosted models
-- Customer-owned enterprise AI
-
-Public AI providers:
-
-- Disabled by default.
-- May only be enabled through explicit governance policy if supported in the future.
-
-Requirement:
-
-- Customer operational data, documents, conversations, and business workflows must never be transmitted to public AI providers by default.
-
-## Provider Architecture
-
-`PROVIDERi` is the exclusive AI provider abstraction.
-
-Applications must not call providers directly.
-
-All AI traffic follows the governed chain:
-
-```text
-Application
--> CHATBOTi
--> LOSi Policy Validation
--> INDEXi Context Retrieval
--> EKOSi Reasoning
--> PROVIDERi AI Routing
--> Selected AI Provider
--> CONTROLi Workflow Execution
--> Audit & Evidence Ledger
-```
-
-## AI Provider Policy Matrix
-
-| Component Group | Public AI | Private AI |
-| --- | --- | --- |
-| Engineering Tools | Allowed | Allowed |
-| FACTORYi | Allowed | Allowed |
-| INDEXi | Allowed for engineering enrichment only | Allowed |
-| EKOSi | Configurable | Preferred |
-| LOSi | Configurable for approved scenarios only | Preferred |
-| PETOSi | Configurable | Preferred |
-| Industry Modules | Disabled by default | Required |
-| Customer Production Environments | Disabled by default | Required |
-
-## Enforcement Requirements
-
-- `LOSi` validates policy before any AI request is routed.
-- `INDEXi` supplies governed context retrieval.
-- `CONTROLi` owns workflow execution authorization.
-- `PROVIDERi` selects the approved provider according to policy.
-- The audit and evidence ledger must capture provider choice, policy decision, and execution outcome.
-- Public provider use must remain fully auditable.
-- Private-by-default behavior must remain the baseline for customer-facing modules.
-
-## Acceptance Criteria
-
-- AI Provider Governance Model documented.
-- `PROVIDERi` defined as the exclusive AI provider abstraction.
-- EKOSi, LOSi, and PETOSi support governed hybrid AI deployments.
-- Engineering components support approved multi-provider AI.
-- Customer-facing modules default to private LLMs only.
-- Public AI usage is policy-controlled and fully auditable.
-- No direct AI provider access from applications.
-- All AI interactions remain subject to `LOSi` policy, `INDEXi` context management, `CONTROLi` execution governance, and evidence capture.
-
-Author: Abner Pauneto
+Legacy EKOS, LOS, PETOS, EGK, ECK, EDTi, ESF, GRAPHi, DATAi, and AUTOMATEi terminology is retained only as historical context where needed. It does not override ATOMIx Enterprise Asset Intelligence.
