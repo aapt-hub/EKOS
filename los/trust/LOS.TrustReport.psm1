@@ -23,7 +23,7 @@ LOS Trust Report.
 Emits structured JSON trust reports from trust decisions and trust evidence.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.8
 Status: Complete

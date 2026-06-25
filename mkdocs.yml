@@ -1,5 +1,5 @@
-site_name: EAi 2.0
-site_description: Enterprise Governance Architecture
+site_name: EAi
+site_description: Enterprise Engineering Platform
 
 theme:
   name: material
@@ -8,10 +8,14 @@ nav:
   - Home: README.md
   - Governance: governance.md
   - Architecture: architecture.md
+  - Reference Architecture: docs/EAi-Reference-Architecture.md
   - Methodology: methodology.md
   - Roadmap: roadmap.md
   - Master Prompt: master-prompt.md
   - Docs:
+      - EAi Constitution: docs/EAi-Constitution.md
+      - EAi-S Enterprise Engineering Standard: docs/EAi-S-Enterprise-Engineering-Standard.md
+      - EAi Reference Architecture: docs/EAi-Reference-Architecture.md
       - EAi 2.0 Enterprise Governance Architecture: docs/EAi-2.0-Enterprise-Governance-Architecture.md
       - Governance Loops: docs/Governance-Loops.md
       - Capability Graph: docs/Capability-Graph.md

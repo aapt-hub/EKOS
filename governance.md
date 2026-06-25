@@ -10,7 +10,20 @@ last_updated: 2026-06-25
 
 # EAi Governance
 
-EAi governance is the top-level umbrella for architecture, methodology, platform operations, AI, security, compliance, and industry solution governance.
+EAi governance is the top-level umbrella for the frozen enterprise architecture.
+
+## Governance Model
+
+- EAi governs the enterprise architecture.
+- Architecture is one governed domain.
+- The frozen reference architecture is the single source of truth.
+- The Constitution and EAi-S Enterprise Engineering Standard define the top-level principles and engineering rules.
+- Monthly review covers normal architecture, business, and module changes.
+- Weekly review is reserved for critical risk, security, provider, and runtime health items.
+- No uncontrolled recursive automation is permitted.
+- Controller-gated review lifecycle is required.
+- Human approval is required before production changes.
+- All recommendations must be explainable and auditable.
 
 ## Governance Responsibilities
 
@@ -24,27 +37,12 @@ EAi governance is the top-level umbrella for architecture, methodology, platform
 - Automation recommendations
 - Owner notification workflows
 
-## Governance Loops
-
-- Monthly governance loop for normal architecture, business, and module review.
-- Weekly loop only for critical items:
-  - vulnerabilities
-  - patches
-  - security advisories
-  - provider changes
-  - certificate expiration
-  - secrets exposure
-  - runtime health
-
 ## Safety And Control Requirements
 
-- No automation may self-expand scope.
-- No recursive self-modification.
-- Human approval is required before production changes.
-- All generated modules must pass controller tests.
 - All provider integrations must go through `PROVIDERi`.
 - All runtime decisions must be policy-checked by `LOSi`.
-- All recommendations must be explainable and auditable.
+- `INDEXi` and `FACTORYi` are structure and planning services unless runtime is explicitly approved.
+- All generated modules must pass controller tests.
 
 ## Controller-Gated Review Lifecycle
 
@@ -59,18 +57,12 @@ Change Request
 -> Audit Capture
 ```
 
-## Related References
-
-- [EAi 2.0 Enterprise Governance Architecture](docs/EAi-2.0-Enterprise-Governance-Architecture.md)
-- [Governance Loops](docs/Governance-Loops.md)
-- [Business Governance](docs/Business-Governance.md)
-- [Runtime Control Guardrails](docs/Runtime-Control-Guardrails.md)
-
 ## Acceptance Criteria
 
 - EAi governance is the top-level umbrella.
-- Monthly review covers normal architecture, business, and module changes.
-- Weekly review is limited to critical risk, security, and runtime items.
+- The frozen reference architecture is the single source of truth.
+- Monthly review handles normal changes.
+- Weekly review handles critical-only items.
 - Controller-gated review lifecycle is documented.
 - Human approval is required before production changes.
 - All provider integrations go through `PROVIDERi`.

@@ -1,7 +1,7 @@
 ---
 title: EKOS Roadmap TODO
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto
@@ -33,7 +33,7 @@ This file tracks current repository roadmap status. Implementation state is veri
 - Do not mark future milestones complete until source modules and tests exist.
 - Preserve deterministic behavior and trust decision semantics during documentation updates.
 
-Author: Abner Pauneto  
-Project: EKOS  
-Repository: EKOS  
+Author: Abner Pauneto
+project: EAi
+Repository: EKOS
 License: Proprietary - All Rights Reserved

@@ -23,7 +23,7 @@ LOS Runtime Trust Enforcement.
 Provides runtime trust enforcement for LOS M2.10. The module persists non-destructive enforcement state for runtime trust subjects and supports quarantine, deny, and revoke actions after trust monitoring or trust authority determines that a subject should no longer be treated as fully trusted.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.10
 Status: Complete

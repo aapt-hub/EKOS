@@ -23,7 +23,7 @@ LOS Runtime Trust Authority.
 Consumes governance and certification results and produces runtime trust authority decisions, trust ledger entries, and trust reports.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.8
 Status: Complete

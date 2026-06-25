@@ -1,6 +1,6 @@
 # EAi 2.0 Enterprise Governance Architecture
 
-EAi 2.0 is the enterprise governance architecture and platform foundation.
+EAi 2.0 is the legacy enterprise governance layer that now sits under the frozen EAi Reference Architecture.
 
 ## Summary
 
@@ -56,4 +56,4 @@ EAi 2.0 is the enterprise governance architecture and platform foundation.
 
 ## Legacy Material
 
-Legacy EKOS-era runtime material remains available, but EAi 2.0 is the governing umbrella and supersedes older framing where conflicts exist.
+Legacy EKOS-era runtime material remains available, but the frozen reference architecture supersedes older framing where conflicts exist.

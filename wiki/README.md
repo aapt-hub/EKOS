@@ -10,13 +10,14 @@ last_updated: 2026-06-25
 
 # EAi Wiki
 
-This wiki retains the legacy EKOS-era pages under the EAi 2.0 governance umbrella.
+This wiki retains the legacy EKOS-era pages under the EAi architecture freeze.
 
-EAi 2.0 documentation at the repository root and in `docs/` is the current authority.
+The frozen reference architecture at the repository root and in `docs/` is the current authority.
 
 ## Navigation
 
 - [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md)
+- [EAi Reference Architecture](../docs/EAi-Reference-Architecture.md)
 - [Governance](../governance.md)
 - [Architecture](../architecture.md)
 - [Methodology](../methodology.md)

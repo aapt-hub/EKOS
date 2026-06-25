@@ -10,11 +10,12 @@ last_updated: 2026-06-25
 
 # Legacy Architecture
 
-The maintained EAi 2.0 architecture pages now live at the repository root and in `docs/`.
+The maintained EAi reference architecture pages now live at the repository root and in `docs/`.
 
 This page is retained as legacy EKOS-era compatibility material.
 
 - [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md)
+- [EAi Reference Architecture](../docs/EAi-Reference-Architecture.md)
 - [EAi Architecture](../architecture.md)
 - [EAi Governance](../governance.md)
 

@@ -10,16 +10,19 @@ last_updated: 2026-06-25
 
 # EAi Wiki Home
 
-EAi 2.0 is documented as a governed enterprise architecture system:
+EAi is documented as a governed enterprise architecture system:
 
 ```text
-Governance
-Architecture
-Knowledge
-Platform
+EAi Reference Architecture
+EGK
+ECK
+EDTi
+ESF
+Platform Products
+Business Platform
 Industry Solutions
 ```
 
-Start with [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md) and [Governance](../governance.md).
+Start with [EAi Reference Architecture](../docs/EAi-Reference-Architecture.md) and [Governance](../governance.md).
 
 Author: Abner Pauneto

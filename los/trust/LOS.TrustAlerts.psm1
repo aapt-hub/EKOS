@@ -23,7 +23,7 @@ LOS Runtime Trust Alerts.
 Creates, reads, and resolves append-only runtime trust alerts for LOS M2.9 monitoring.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.9
 Status: Complete

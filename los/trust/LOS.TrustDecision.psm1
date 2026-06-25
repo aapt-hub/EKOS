@@ -23,7 +23,7 @@ LOS Trust Decision.
 Evaluates trust evidence and fail-closed runtime trust decision conditions.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.8
 Status: Complete

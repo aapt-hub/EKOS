@@ -10,7 +10,7 @@ last_updated: 2026-06-25
 
 # LOS Governance
 
-LOS governance is retained as legacy runtime authority material under the EAi umbrella.
+LOS governance is retained as legacy runtime authority material under the EAi architecture freeze.
 
 Implemented governance chain:
 
@@ -22,6 +22,7 @@ Primary maintained pages:
 
 - [EAi Governance](../governance.md)
 - [EAi Architecture](../architecture.md)
+- [EAi Reference Architecture](../docs/EAi-Reference-Architecture.md)
 - [EAi 2.0 Enterprise Governance Architecture](../docs/EAi-2.0-Enterprise-Governance-Architecture.md)
 - [Governance Enforcement](20-Governance/Governance-Enforcement.md)
 - [AI Provider Governance](20-Governance/AI-Provider-Governance.md)

@@ -23,7 +23,7 @@ LOS Runtime Trust Monitor.
 Runs continuous or one-pass runtime trust monitoring, recalculates trust scores, emits alerts, writes runtime events, and updates trust health summaries.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.9
 Status: Complete

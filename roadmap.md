@@ -10,36 +10,31 @@ last_updated: 2026-06-25
 
 # EAi Roadmap
 
-The roadmap is governed by EAi review loops and controller-gated promotion.
+The roadmap is frozen around EAi Reference Architecture and M3 kernel readiness.
+
+## Current State
+
+- Architecture is frozen.
+- Documentation is normalized.
+- Legacy EKOS-era material is retained for compatibility.
 
 ## Near-Term Priorities
 
-- Align documentation and skeleton structure to EAi 2.0.
-- Establish governed capability graph references.
-- Normalize solution-pack placeholders.
-- Normalize provider governance references.
-- Preserve legacy EKOS material as superseded history.
+- Keep the frozen architecture as the single source of truth.
+- Align implementation work to EGK, ECK, EDTi, and ESF boundaries.
+- Keep platform products consumer-oriented.
+- Keep business modules modular.
+- Keep deployment models documented.
 
-## Ongoing Cadence
+## Review Cadence
 
 - Monthly: normal architecture, business, and module review.
-- Weekly: critical-only security and runtime review.
-
-## Approval Rule
-
-No runtime expansion is approved until the relevant governance, methodology, and controller checks are documented.
-
-## Related References
-
-- [Governance Loops](docs/Governance-Loops.md)
-- [Module Lifecycle](docs/Module-Lifecycle.md)
-- [Runtime Control Guardrails](docs/Runtime-Control-Guardrails.md)
+- Weekly: critical-only security, provider, certificate, and runtime health review.
 
 ## Acceptance Criteria
 
-- The roadmap is governed by EAi review loops and controller-gated promotion.
-- Normal updates follow the monthly loop.
-- Critical risk and security items use the weekly loop only.
-- No runtime expansion occurs without documented approval.
+- No runtime expansion occurs without architectural approval.
+- The frozen reference architecture remains the source of truth.
+- M3 kernel development begins only after architecture gaps are closed.
 
 Author: Abner Pauneto

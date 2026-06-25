@@ -1,5 +1,5 @@
 ---
-title: EAi 2.0
+title: EAi
 author: Abner Pauneto
 project: EAi
 repository_status: Private Development
@@ -8,118 +8,109 @@ copyright: Copyright (c) 2026 Abner Pauneto
 last_updated: 2026-06-25
 ---
 
-# EAi 2.0
+# EAi
 
-EAi 2.0 is the Enterprise Governance Architecture for the platform.
+EAi is the Enterprise Engineering Platform.
 
-It is the governing architecture and platform foundation for enterprise capabilities, business operations, AI, security, compliance, DevSecOps, observability, automation, and industry solutions.
+The architecture is the center.
+No module may become the architectural center.
 
-## Core Domains
+Everything is generated from the Reference Architecture.
 
-- EAi.Constitution
-- EAi.Governance
-- EAi.Methodology
-- EAi.Architecture
-- EAi.Knowledge
-- EAi.Platform
+## Frozen Foundation
 
-## Core Platform Components
+```text
+EAi
+├── EAi.Constitution
+├── EAi-S Enterprise Engineering Standard
+├── EAi.ReferenceArchitecture
+├── EAi.Governance
+├── EAi.Methodology
+├── EAi.EngineeringToolchain
+├── EAi.Knowledge
+├── Enterprise Graph Kernel (EGK)
+├── Enterprise Capability Kernel (ECK)
+├── Enterprise Digital Twin (EDTi)
+├── Enterprise Service Fabric (ESF)
+├── Platform Products
+├── Business Platform
+├── Industry Solutions
+└── Deployment Models
+```
 
-- LOSi - policy, trust, identity, authorization, risk, compliance
-- EKOSi - AI, knowledge, recommendations, learning, competency graph
-- CONTROLi - orchestration, workflows, scheduling, routing
-- INDEXi - catalog, discovery, search, metadata, dependency lineage
-- FACTORYi - module and repository generation, engineering automation
-- PROVIDERi - provider abstraction for AI, cloud, database, messaging, identity
-- CONSOLEi - enterprise command center
-- SDKi - CLI, APIs, developer tooling
-- USEROBSERVEi - per-user observability and activity timeline
-- Industry Solution Packs
+## Reference Architecture
 
-## Governance-First Model
+The official reference architecture is frozen in [architecture.md](architecture.md) and mirrored in [docs/EAi-Reference-Architecture.md](docs/EAi-Reference-Architecture.md).
 
-Governance is the top-level umbrella.
+## Design Rules
 
-Architecture is one governed domain under EAi.
+- Capability driven
+- Graph driven
+- Policy driven
+- Contract driven
+- Metadata driven
+- Event driven
+- Governed
+- Observable
+- Certifiable
 
-Capability Graph is a first-class architectural component.
+## Current Freeze Scope
 
-## Review Cadence
+- Documentation
+- Governance
+- Standards
+- Contracts
+- Schemas
+- Registries
+- Diagrams
+- Repository structure
 
-- Monthly review for normal architecture, business, and module changes.
-- Weekly review only for critical items: vulnerabilities, patches, security advisories, provider changes, certificate expiration, secrets exposure, and runtime health.
-- No uncontrolled recursive automation.
-- Controller-gated review lifecycle.
-- Human approval is required before production changes.
-- Strict dev/test/prod promotion is required.
+## Legacy Material
 
-## Documentation And Structure
-
-- Documentation-first and structure-first are used where runtime is not yet approved.
-- All recommendations must be explainable and auditable.
-- All provider integrations must go through `PROVIDERi`.
-- All runtime decisions must be policy-checked by `LOSi`.
+Legacy EKOS-era material remains in the repository as compatibility history and must not override the frozen reference architecture.
 
 ## Primary References
 
-- [EAi 2.0 Enterprise Governance Architecture](docs/EAi-2.0-Enterprise-Governance-Architecture.md)
-- [Governance](governance.md)
 - [Architecture](architecture.md)
+- [EAi Constitution](docs/EAi-Constitution.md)
+- [EAi-S Enterprise Engineering Standard](docs/EAi-S-Enterprise-Engineering-Standard.md)
+- [Governance](governance.md)
 - [Methodology](methodology.md)
 - [Roadmap](roadmap.md)
+- [EAi Reference Architecture](docs/EAi-Reference-Architecture.md)
+- [EAi Governance Architecture](docs/EAi-2.0-Enterprise-Governance-Architecture.md)
 - [Master Prompt](master-prompt.md)
-
-## Industry Solution Packs
-
-Industry solution packs are optional, certified, composable, and deployable from `CONSOLEi` and `FACTORYi` without forcing the full platform to be generated for every customer.
-
-Examples:
-
-- Healthcarei
-- Accountingi
-- MSPi
-- CRMi
-- ERPi
-- ITSMi
-- Securityi
-- Compliancei
-- Financei
-- Legali
-- Educationi
-- Governmenti
-- Retaili
-- Manufacturingi
-- Logisticsi
-
-## Legacy Notes
-
-The older EKOS / LOS / PETOS documentation remains in the repository as legacy and compatibility material. The EAi 2.0 docs supersede the older framing where the two conflict.
-
-Author: Abner Pauneto
 
 ## Repository Structure
 
-- `platform/`: EAi platform components and skeletons.
-- `solutions/`: Industry solution packs.
-- `prompts/`: Master, governance, architecture, platform, module, and audit prompts.
-- `audits/`: Architecture, governance, security, compliance, module, and release audit artifacts.
-- `docs/`: EAi governance, methodology, architecture, and control references.
-- `wiki/`: Legacy and compatibility docs organized by EAi domains.
-- `los/`, `ekos/`, `petos/`, `graph/`: Existing subsystem history and implementation material.
+- `docs/`: Canonical EAi architecture, governance, methodology, and standards.
+- `wiki/`: Legacy and compatibility documentation.
+- `platform/`: Platform product skeletons.
+- `solutions/`: Industry solution skeletons.
+- `adr/`: Architecture decision records.
+- `contracts/`: Contract definitions and placeholders.
+- `schemas/`: Schema definitions and placeholders.
+- `registries/`: Registry placeholders.
+- `diagrams/`: Reference diagrams.
+- `tests/`: Architecture validation placeholders.
+- `scripts/`: PowerShell-first operational scripts.
+- `audits/`: Audit and evidence placeholders.
+- `releases/`: Release and promotion placeholders.
 
-## Validation Process
+## Acceptance Criteria
 
-```powershell
-Import-Module Pester -MinimumVersion 5.0 -Force
-Invoke-Pester .\los\tests\ -Output Minimal
-```
+- EAi is defined as an Enterprise Engineering Platform.
+- EAi.ReferenceArchitecture is the single source of truth.
+- EGK owns graph infrastructure only.
+- ECK owns capability governance only.
+- EDTi owns enterprise state only.
+- ESF exposes governed enterprise services only.
+- Platform products consume architecture.
+- Business modules remain modular.
+- Deployment models are documented.
+- Technology standards are frozen.
+- Repository structure is standardized.
+- Cross references are valid.
+- The architecture is implementation-ready for M3 kernel development.
 
-## Ownership
-
-Author: Abner Pauneto  
-Copyright: Copyright (c) 2026 Abner Pauneto  
-License: Proprietary – All Rights Reserved  
-
-## License
-
-This repository is private proprietary software. Use, copying, modification, distribution, sublicensing, publication, reverse engineering, or commercial use requires express written permission from Abner Pauneto.
+Author: Abner Pauneto

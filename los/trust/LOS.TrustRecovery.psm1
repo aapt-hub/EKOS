@@ -23,7 +23,7 @@ LOS Runtime Trust Recovery.
 Implements LOS-TRUST-004 Runtime Trust Recovery as an evidence-based restoration workflow. Recovery approval authorizes revalidation only; it does not restore trust or activate a subject by itself.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS Trust Authority Layer
 Capability: LOS-TRUST-004
 Roadmap Milestone: M2.11

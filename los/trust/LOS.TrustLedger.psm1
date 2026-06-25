@@ -23,7 +23,7 @@ LOS Trust Ledger.
 Writes, reads, locates, and validates append-only runtime trust ledger records and compatibility wrapper APIs.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.8
 Status: Complete

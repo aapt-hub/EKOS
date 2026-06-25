@@ -23,7 +23,7 @@ LOS Trust Evidence.
 Builds deterministic trust evidence records and hashes for runtime trust authority workflows.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.8
 Status: Complete

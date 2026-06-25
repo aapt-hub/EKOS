@@ -1,7 +1,7 @@
 ---
 title: PAT 0006 Defense in Depth
 author: Abner Pauneto
-project: EKOS
+project: EAi
 repository_status: Private Development
 license: Proprietary
 copyright: Copyright (c) 2026 Abner Pauneto

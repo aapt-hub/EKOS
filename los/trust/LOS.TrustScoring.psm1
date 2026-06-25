@@ -23,7 +23,7 @@ LOS Runtime Trust Scoring.
 Calculates and updates runtime trust scores for LOS M2.9 monitoring using governance, certification, runtime health, and historical trust evidence.
 
 Author: Abner Pauneto
-Project: EKOS
+project: EAi
 Subsystem: LOS
 Phase: M2.9
 Status: Complete
